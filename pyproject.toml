@@ -1,0 +1,7 @@
+[project]
+name = "cecli-cat"
+version = "0.1.0"
+description = "Cecli Atomic Tests"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []

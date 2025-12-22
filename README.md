@@ -1,13 +1,27 @@
 # Cecli Atomic Tests
 
+Its very hard to improve what you cannot measure.
+
+Benchmarking enables us to chose the best model for our needs, and configure it to get the best out of it.
+
+As models evolve, so must our tests and our metrics.
+
+Cecli Atomic Tests (Cats) aim to enable us to tune hyper-parameters and cecli settings.
+
+The proposed changes enable approaching a new set of more nuanced questions:
+
+* "Which prompt is best?"
+* "How do we get the best performance from a specific model (x model)?"
+* "Which tests are best at discriminating certain optimisations?"
+
+## Source Attribution
+
 This is a fork of the [Aider polyglot benchmark](), based on a subset of repository contains a curated collection of programming exercises extracted from Exercism's language tracks. These exercises are used for benchmarking and testing purposes.
 
 For more information see:
 
 - [The aider blog](https://aider.chat/2024/12/21/polyglot.html)
 - [The benchmark harness README](https://github.com/Aider-AI/aider/tree/main/benchmark)
-
-## Source Attribution
 
 All exercises in this repository are sourced from the following Exercism language tracks:
 
