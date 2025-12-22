@@ -1,0 +1,6 @@
+uuid: d6a4aa54-3984-4ca2-945d-16602db9bae7
+hash: 75668b80b75ab054b2911dcc82f1da4c00e24498f65e3e1227e93656d5be4321
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

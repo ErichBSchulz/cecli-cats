@@ -1,0 +1,6 @@
+uuid: c1ba9aad-9e7e-429f-b416-9da96012ae85
+hash: ae6f729bb6471071137497a9d9b4d2cd4c34b516f533de3d6272fb41491276af
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

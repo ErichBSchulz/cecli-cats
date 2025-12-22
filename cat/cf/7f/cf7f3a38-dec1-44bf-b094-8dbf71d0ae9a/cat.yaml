@@ -1,0 +1,6 @@
+uuid: cf7f3a38-dec1-44bf-b094-8dbf71d0ae9a
+hash: 71f3be11344e59a4a56ee26d3d89760d0ef20d162bec70a535c2aa73eed46d0f
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust
