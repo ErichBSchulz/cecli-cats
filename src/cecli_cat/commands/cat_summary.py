@@ -10,7 +10,7 @@ def run(args):
     level = logging.WARNING
     if args.quiet:
         level = logging.ERROR
-    
+
     logging.basicConfig(level=level, format="%(message)s")
     logger = logging.getLogger(__name__)
 
@@ -43,16 +43,16 @@ def run(args):
                 name = test.get("name", "unnamed")
                 path = test.get("path", "")
                 print(f"  - {name:<30} {path}")
-        print() 
+        print()
 
     # Print summary table
     print(f"{'Language':<20} {'Count':>10}")
     print("-" * 31)
-    
+
     for lang in sorted(tests_by_lang.keys()):
         count = len(tests_by_lang[lang])
         print(f"{lang:<20} {count:>10}")
-    
+
     print("-" * 31)
     print(f"{'Total':<20} {total_tests:>10}")
 
