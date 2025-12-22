@@ -59,11 +59,14 @@ def run(args):
 
 def add_parser(subparsers):
     parser = subparsers.add_parser(
-        "rehash",
+        "rehash_cats",
         help="Recalculate hashes for all tests",
         description="""
         Visits every directory in 'cat/', recalculates the hash (excluding cat.yaml and LICENSE),
         and updates the cat.yaml file if the hash has changed.
+
+        This command is useful for ensuring that the checksums in cat.yaml files match
+        the actual content of the directories, for example after manual editing.
         """,
     )
     parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
