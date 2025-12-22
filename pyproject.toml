@@ -10,10 +10,11 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pytest",
+    "PyYAML",
 ]
 
 [project.scripts]
-cecli-cat = "cecli_cat:main"
+cecli-cat = "cecli_cat.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cecli_cat.py"]
+packages = ["src/cecli_cat"]
