@@ -1,0 +1,7 @@
+name: grade-school
+uuid: 166ec2b2-503c-4f95-8160-1fdff1e370f6
+hash: a6bfb9331674bd468dcbb0038c5ac062e14ed2a38b5b9c5fa382d89365ef751d
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

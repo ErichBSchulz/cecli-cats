@@ -1,0 +1,7 @@
+name: triangle
+uuid: 6222015a-2f6b-4694-ab37-5dafb49d1cfc
+hash: b18f7524fb0a6b39217b5241444543d1beb7c7ce0db4f911646a694eb9f09164
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

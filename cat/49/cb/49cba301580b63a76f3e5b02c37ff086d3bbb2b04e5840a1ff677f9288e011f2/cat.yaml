@@ -1,0 +1,7 @@
+name: robot-name
+uuid: 311a96c5-0185-4a13-9678-6177e0cc4e2f
+hash: 49cba301580b63a76f3e5b02c37ff086d3bbb2b04e5840a1ff677f9288e011f2
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

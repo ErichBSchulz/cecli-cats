@@ -1,0 +1,7 @@
+name: poker
+uuid: 377fdb52-d6cf-4b10-8f22-e2d82674437c
+hash: 76b0e2cf52d4313032730db424fcc734474995ad0089f486548d60b616375f1c
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

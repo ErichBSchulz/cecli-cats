@@ -1,0 +1,7 @@
+name: react
+uuid: f00b73bb-24ea-4703-af93-bb517226882d
+hash: e01270b797da9c494ec79e654d661b19054acb3bc21085a97a58cc8775616b31
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

@@ -1,0 +1,7 @@
+name: book-store
+uuid: 7fc4183e-8bfe-4608-92f3-c758ff9f14f4
+hash: 310293a5d3d428a4522998615a9506f494f23dc845a75c666e4ec8eb166ee7a6
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

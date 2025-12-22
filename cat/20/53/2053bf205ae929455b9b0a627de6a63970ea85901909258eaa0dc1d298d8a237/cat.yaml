@@ -1,0 +1,7 @@
+name: zipper
+uuid: 6bb46fd8-3f1c-4293-8b52-b8c694610814
+hash: 2053bf205ae929455b9b0a627de6a63970ea85901909258eaa0dc1d298d8a237
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

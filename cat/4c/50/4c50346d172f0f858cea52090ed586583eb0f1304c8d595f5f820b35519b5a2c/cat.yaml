@@ -1,0 +1,7 @@
+name: acronym
+uuid: aa9ac742-a351-4e8b-a3c9-d8237f13566e
+hash: 4c50346d172f0f858cea52090ed586583eb0f1304c8d595f5f820b35519b5a2c
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

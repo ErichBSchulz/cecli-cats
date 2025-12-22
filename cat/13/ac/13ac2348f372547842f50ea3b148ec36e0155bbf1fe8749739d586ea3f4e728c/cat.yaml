@@ -1,0 +1,7 @@
+name: bottle-song
+uuid: de9fa897-c96a-4947-ad91-51f20d5ec6ba
+hash: 13ac2348f372547842f50ea3b148ec36e0155bbf1fe8749739d586ea3f4e728c
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

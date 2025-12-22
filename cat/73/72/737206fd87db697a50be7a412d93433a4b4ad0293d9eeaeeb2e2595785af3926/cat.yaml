@@ -1,0 +1,7 @@
+name: two-bucket
+uuid: 1ab5df21-cf9c-47e4-a12a-2669f05a91c9
+hash: 737206fd87db697a50be7a412d93433a4b4ad0293d9eeaeeb2e2595785af3926
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

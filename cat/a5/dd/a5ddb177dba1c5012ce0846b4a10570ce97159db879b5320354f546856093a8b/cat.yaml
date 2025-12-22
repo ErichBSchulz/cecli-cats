@@ -1,0 +1,7 @@
+name: matrix
+uuid: 6f888cc2-4628-41ff-97c8-2cee2087b3a2
+hash: a5ddb177dba1c5012ce0846b4a10570ce97159db879b5320354f546856093a8b
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

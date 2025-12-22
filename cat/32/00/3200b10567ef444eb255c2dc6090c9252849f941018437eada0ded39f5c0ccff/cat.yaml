@@ -1,0 +1,7 @@
+name: house
+uuid: e6319b3e-bdae-4ed2-b285-cefbebca933a
+hash: 3200b10567ef444eb255c2dc6090c9252849f941018437eada0ded39f5c0ccff
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

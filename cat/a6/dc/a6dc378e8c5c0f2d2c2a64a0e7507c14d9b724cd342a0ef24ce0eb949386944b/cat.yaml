@@ -1,0 +1,7 @@
+name: sgf-parsing
+uuid: 833e1fe1-ce12-4681-852d-d7aa8270d0f4
+hash: a6dc378e8c5c0f2d2c2a64a0e7507c14d9b724cd342a0ef24ce0eb949386944b
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

@@ -1,0 +1,7 @@
+name: two-bucket
+uuid: fe89fd8e-f58e-4420-833d-7ac2d029c10a
+hash: e52368ee68014e4423ea7b643b217793afab02cba7d84c62d3e932d524aec999
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

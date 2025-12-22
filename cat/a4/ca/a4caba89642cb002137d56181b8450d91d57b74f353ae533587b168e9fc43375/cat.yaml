@@ -1,0 +1,7 @@
+name: go-counting
+uuid: d64b019f-c99f-4100-9804-b55a192abaab
+hash: a4caba89642cb002137d56181b8450d91d57b74f353ae533587b168e9fc43375
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

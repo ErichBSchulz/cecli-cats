@@ -1,0 +1,7 @@
+name: forth
+uuid: cc467c6e-b394-471a-a3f5-edc9a55f6427
+hash: 703d8452ce18f7a98b5154cc40ede0bb6b607a399a2f8bf6a7658f7b20aa9da3
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

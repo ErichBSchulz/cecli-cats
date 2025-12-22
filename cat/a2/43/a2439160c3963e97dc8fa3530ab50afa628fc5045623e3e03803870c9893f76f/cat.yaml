@@ -1,0 +1,7 @@
+name: variable-length-quantity
+uuid: 6f1393b3-1f07-4e2c-8ac5-2ce18d7a9add
+hash: a2439160c3963e97dc8fa3530ab50afa628fc5045623e3e03803870c9893f76f
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

@@ -1,0 +1,7 @@
+name: trinary
+uuid: c343cac9-affc-4f27-8130-2909975e9296
+hash: 797a83ab141b6ba4ae54e6787a9ad42eb2fe3995fb77c4300e8b1c79de6ff5a5
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

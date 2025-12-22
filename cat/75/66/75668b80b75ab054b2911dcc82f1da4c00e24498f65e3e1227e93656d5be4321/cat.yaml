@@ -1,0 +1,7 @@
+name: sgf-parsing
+uuid: c6606aa4-3258-4a4a-81ba-393e9bf1a40a
+hash: 75668b80b75ab054b2911dcc82f1da4c00e24498f65e3e1227e93656d5be4321
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

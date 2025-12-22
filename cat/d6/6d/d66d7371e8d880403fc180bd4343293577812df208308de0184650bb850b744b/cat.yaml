@@ -1,0 +1,7 @@
+name: connect
+uuid: 7be572fa-bc9b-43e9-a296-afb0a2332aa0
+hash: d66d7371e8d880403fc180bd4343293577812df208308de0184650bb850b744b
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

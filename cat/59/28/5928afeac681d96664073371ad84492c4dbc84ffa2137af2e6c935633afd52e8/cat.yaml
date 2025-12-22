@@ -1,0 +1,7 @@
+name: resistor-color-trio
+uuid: c4e02436-8cee-42f6-9564-99a8e5434765
+hash: 5928afeac681d96664073371ad84492c4dbc84ffa2137af2e6c935633afd52e8
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

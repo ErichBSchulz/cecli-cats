@@ -1,0 +1,7 @@
+name: forth
+uuid: 6f509df5-d1e2-417d-b450-fefd26adc1fa
+hash: f630603d3a244a0a10b4618c556070e55856ab681950915a7e9cda0d2e11abe0
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

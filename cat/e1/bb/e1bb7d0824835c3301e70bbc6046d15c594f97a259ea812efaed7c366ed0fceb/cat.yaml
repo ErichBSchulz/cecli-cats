@@ -1,0 +1,7 @@
+name: pov
+uuid: 8bf660c6-99be-4748-a954-c6955df85938
+hash: e1bb7d0824835c3301e70bbc6046d15c594f97a259ea812efaed7c366ed0fceb
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

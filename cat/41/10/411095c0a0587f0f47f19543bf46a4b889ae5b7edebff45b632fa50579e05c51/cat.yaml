@@ -1,0 +1,7 @@
+name: queen-attack
+uuid: 6d7f1dbc-9b96-4c7f-b948-301087c9abc7
+hash: 411095c0a0587f0f47f19543bf46a4b889ae5b7edebff45b632fa50579e05c51
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: grep
+uuid: a7cb6b3e-b421-4114-a3fd-a68088f62150
+hash: fd39f2568e0d6087fd371793bbe833847a2b87d36a87ea38045fc25efcb2b817
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

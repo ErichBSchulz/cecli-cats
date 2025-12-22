@@ -1,0 +1,7 @@
+name: zebra-puzzle
+uuid: 81e57d57-8d24-4e7e-8b48-97f704cc872e
+hash: 8875dae64357a97d7cc508cce46a284944ee563121cdb009519d5e16a412d140
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

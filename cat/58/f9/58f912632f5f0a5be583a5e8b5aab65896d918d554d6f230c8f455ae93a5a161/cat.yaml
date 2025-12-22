@@ -1,0 +1,7 @@
+name: zebra-puzzle
+uuid: a34e5308-e0c0-4dfe-9e03-3b0b57d6e736
+hash: 58f912632f5f0a5be583a5e8b5aab65896d918d554d6f230c8f455ae93a5a161
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

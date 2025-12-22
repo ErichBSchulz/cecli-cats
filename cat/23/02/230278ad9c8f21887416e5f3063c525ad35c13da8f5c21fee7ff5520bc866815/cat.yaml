@@ -1,0 +1,7 @@
+name: variable-length-quantity
+uuid: 936e4860-be41-46a1-9e79-0c9f0ec602ff
+hash: 230278ad9c8f21887416e5f3063c525ad35c13da8f5c21fee7ff5520bc866815
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

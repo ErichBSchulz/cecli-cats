@@ -1,0 +1,7 @@
+name: xorcism
+uuid: 7ba9c24a-215a-442f-9cbe-5f2b6fd10b5b
+hash: 5d4bfee6288c846313e8a6a53dffeb9106ce0e5ace36a6f83c1bff3436a6c687
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

@@ -1,0 +1,7 @@
+name: alphametics
+uuid: 030a83b3-7561-4121-bb82-3a8cbe6ddb8e
+hash: 102d57cc1e2fb676c8729e84c6274f4e853ad13188935dfd9851ab10eee780af
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

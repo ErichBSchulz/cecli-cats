@@ -1,0 +1,7 @@
+name: grade-school
+uuid: a2d8887a-4118-442a-93c6-34f2bd613387
+hash: fa185655c7ef69c29c80188f8d4d7d910e8bfead9b95bcd397919f31dd0975dc
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

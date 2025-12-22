@@ -1,0 +1,7 @@
+name: bowling
+uuid: d1f4e9ac-3305-47c1-ac1f-c342e6067748
+hash: 6d199e22900c35f1a63fc7568427b4a4fde3bd68d4a2ea38b178e7cc231586bd
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

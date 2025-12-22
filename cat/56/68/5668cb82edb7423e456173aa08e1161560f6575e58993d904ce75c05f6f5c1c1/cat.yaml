@@ -1,0 +1,7 @@
+name: ocr-numbers
+uuid: 184f46ff-f5bd-4fb7-bd59-9a153c4da400
+hash: 5668cb82edb7423e456173aa08e1161560f6575e58993d904ce75c05f6f5c1c1
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

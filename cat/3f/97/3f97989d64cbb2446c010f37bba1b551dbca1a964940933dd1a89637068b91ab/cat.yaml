@@ -1,0 +1,7 @@
+name: zebra-puzzle
+uuid: ef9e88eb-030b-4497-bdc7-a735b224f674
+hash: 3f97989d64cbb2446c010f37bba1b551dbca1a964940933dd1a89637068b91ab
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

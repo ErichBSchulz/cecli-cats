@@ -1,0 +1,7 @@
+name: pig-latin
+uuid: a2d46bca-a5c1-4309-9207-d3a2efc0593c
+hash: 317cc09f6adbb994700cc860a37fc7cd54fa9825e9c7a86d73de83fc7a13006c
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

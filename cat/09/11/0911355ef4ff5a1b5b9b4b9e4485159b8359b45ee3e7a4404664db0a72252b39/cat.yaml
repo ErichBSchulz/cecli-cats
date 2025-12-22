@@ -1,0 +1,7 @@
+name: variable-length-quantity
+uuid: 230bff97-a287-4245-8937-92003e650280
+hash: 0911355ef4ff5a1b5b9b4b9e4485159b8359b45ee3e7a4404664db0a72252b39
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

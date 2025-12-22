@@ -1,0 +1,7 @@
+name: knapsack
+uuid: 25a3aeb6-8ea6-4f58-9f13-064e44c6bd5e
+hash: 32fe4c4f9aefe1876a0d32bae9c9e7f4d44204919e7b332022aae87cf12981a8
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

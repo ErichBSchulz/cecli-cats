@@ -1,0 +1,7 @@
+name: bowling
+uuid: 70dd8c34-9035-4c5a-bd58-cd7bfadb29cd
+hash: f34c75f23c6d48eddc57bc8f0e6c81293ab8283273e5eb8291f477d668b5fefb
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

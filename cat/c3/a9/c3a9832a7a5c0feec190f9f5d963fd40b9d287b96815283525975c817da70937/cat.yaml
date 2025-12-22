@@ -1,0 +1,7 @@
+name: tree-building
+uuid: 6d262f08-6b42-4dba-8702-99c0e5776b5c
+hash: c3a9832a7a5c0feec190f9f5d963fd40b9d287b96815283525975c817da70937
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

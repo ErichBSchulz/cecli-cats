@@ -1,0 +1,7 @@
+name: poker
+uuid: c698c612-3d50-4ba5-aab7-6ae2962712a0
+hash: 6213378f9c22a71ac130c114e68109d403e2a77830010abf591d546d9305de65
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

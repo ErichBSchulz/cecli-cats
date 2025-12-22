@@ -1,0 +1,7 @@
+name: kindergarten-garden
+uuid: 581fb44d-93a0-4824-bfa2-090277f23053
+hash: 0d7aa422d406121d6abec44c10a5cef95fdd79ab81a474c5d9d33d80c03c23b2
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

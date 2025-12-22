@@ -1,0 +1,7 @@
+name: ocr-numbers
+uuid: a754cce9-7d7e-404a-ba5f-3c8f7f34f74b
+hash: 7a03ffb98a0c2cf1c2586bf1c85ef12c50c2bf45d90c53a8ef0a0b73cb989d29
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

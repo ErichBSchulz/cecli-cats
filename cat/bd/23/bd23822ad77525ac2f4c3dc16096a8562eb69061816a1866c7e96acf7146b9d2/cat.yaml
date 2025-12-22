@@ -1,0 +1,7 @@
+name: pig-latin
+uuid: bf33ebee-318b-43f6-8dca-e697a810116b
+hash: bd23822ad77525ac2f4c3dc16096a8562eb69061816a1866c7e96acf7146b9d2
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

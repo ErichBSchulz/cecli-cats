@@ -1,0 +1,7 @@
+name: rectangles
+uuid: bd76e214-21f2-443a-90af-8e69e803359a
+hash: 58a89576482be84e9fe9953e6bde891222461e423e33b182c8868ad8f02a0cfd
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

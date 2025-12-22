@@ -1,0 +1,7 @@
+name: paasio
+uuid: f909f3b1-5a8c-42da-aa07-ecaf9daa358b
+hash: f485066a5c1c83e2723e2cd73106563f5aa8da3032d3e7d64d7ea5c717f8f15c
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

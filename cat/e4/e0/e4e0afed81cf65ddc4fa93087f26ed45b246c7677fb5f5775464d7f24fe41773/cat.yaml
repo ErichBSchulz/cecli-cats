@@ -1,0 +1,7 @@
+name: transpose
+uuid: 0db25841-9127-4546-81f4-ce99e4e53860
+hash: e4e0afed81cf65ddc4fa93087f26ed45b246c7677fb5f5775464d7f24fe41773
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: food-chain
+uuid: 9c4e35cc-7aa7-4733-ac27-6abdbb6497e3
+hash: 5667e743bfc69fdb3124171677600bce341a18b8ceafdb6ab5b7542fa95dc167
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

@@ -1,0 +1,7 @@
+name: binary-search-tree
+uuid: e8b24d2e-6451-4934-ad20-595fa42ba6da
+hash: 57c5e9530d8306bf575dcb01e728e67331982d4a93fe3af3c59ee072a28847ca
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

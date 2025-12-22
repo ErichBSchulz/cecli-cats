@@ -1,0 +1,7 @@
+name: say
+uuid: 2e34a2c7-ae22-4650-96ae-c0c3ef367b99
+hash: 7214de3eb909a16fd698b45517477af4ffb9410a5a297851527bc6b2272a2229
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

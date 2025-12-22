@@ -1,0 +1,7 @@
+name: ocr-numbers
+uuid: d63d9636-22b8-49f8-aa0b-f389ea30e65d
+hash: 4a1519f6e2cbe52b5ec9474c7a04d6a5dd87efa20bea180b2f320c7aba9b4470
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

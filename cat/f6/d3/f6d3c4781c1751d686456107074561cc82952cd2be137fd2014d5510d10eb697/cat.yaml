@@ -1,0 +1,7 @@
+name: proverb
+uuid: 28de526b-7b57-4647-a19b-da7ddca66b8f
+hash: f6d3c4781c1751d686456107074561cc82952cd2be137fd2014d5510d10eb697
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

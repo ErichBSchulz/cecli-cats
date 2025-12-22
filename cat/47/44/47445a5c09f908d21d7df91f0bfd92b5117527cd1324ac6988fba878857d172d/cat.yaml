@@ -1,0 +1,7 @@
+name: bottle-song
+uuid: 67e1ccb3-7385-4309-bd21-eac9ba37bfae
+hash: 47445a5c09f908d21d7df91f0bfd92b5117527cd1324ac6988fba878857d172d
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

@@ -1,0 +1,7 @@
+name: diamond
+uuid: 4d5fe224-3af9-4a66-8c7f-ef2588253e21
+hash: 721f795fc452a0ec3e48db2428437aacccc247346105a8e94b99582c2e9b0b5a
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

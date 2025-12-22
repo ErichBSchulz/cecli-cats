@@ -1,0 +1,7 @@
+name: palindrome-products
+uuid: 10d0a1e9-dcfc-4ac0-bf57-241356c00530
+hash: 7c4d437c52f1383137577d3b89f0ac6e095838423738142a9c1ad6b7ff174964
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

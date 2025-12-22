@@ -1,0 +1,7 @@
+name: pythagorean-triplet
+uuid: 44ec10ad-b33e-4957-aa44-f02af832f287
+hash: d4f1f5390eb32b9d6d219dff0d8a083b86da658c38e80c6fed62835b4b928c9e
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

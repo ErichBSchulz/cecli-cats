@@ -1,0 +1,7 @@
+name: mazy-mice
+uuid: d61d4235-37d5-446e-9813-5bb23e6a6360
+hash: 26d15aed3ca329a26150456d02f227dd4e403503c1611bfc4da7bc9f12514358
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

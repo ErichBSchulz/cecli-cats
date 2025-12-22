@@ -1,0 +1,7 @@
+name: connect
+uuid: 7d0dc59c-8214-491c-8a11-2f676b049f10
+hash: a6f1c6e26647fe96277a4c2a6078ae8d87e7ffc9d0fd7b9f065b47a8f64c6e13
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

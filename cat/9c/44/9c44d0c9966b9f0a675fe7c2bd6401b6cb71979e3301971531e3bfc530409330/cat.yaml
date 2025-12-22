@@ -1,0 +1,7 @@
+name: list-ops
+uuid: 16c41320-196f-4414-ab67-258cb2e4b7a7
+hash: 9c44d0c9966b9f0a675fe7c2bd6401b6cb71979e3301971531e3bfc530409330
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: forth
+uuid: 6fd3b841-03f0-4512-b77e-27699684dce7
+hash: 31c92482c6d362bd7afb235e88b21121249a10652137eb5a970135e56e86b261
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

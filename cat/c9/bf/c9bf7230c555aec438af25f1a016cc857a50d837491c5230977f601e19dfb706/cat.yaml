@@ -1,0 +1,7 @@
+name: markdown
+uuid: e53132c4-4af8-469a-8a72-b057decf3d9e
+hash: c9bf7230c555aec438af25f1a016cc857a50d837491c5230977f601e19dfb706
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

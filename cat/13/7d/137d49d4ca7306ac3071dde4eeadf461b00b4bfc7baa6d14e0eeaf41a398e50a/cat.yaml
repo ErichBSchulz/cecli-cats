@@ -1,0 +1,7 @@
+name: word-search
+uuid: 4f70f641-8b46-4535-a2de-8b35e45b0a1b
+hash: 137d49d4ca7306ac3071dde4eeadf461b00b4bfc7baa6d14e0eeaf41a398e50a
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

@@ -1,0 +1,7 @@
+name: macros
+uuid: fe060c3b-473d-4ccd-86ec-4980ac1edc7b
+hash: 2a693a97301643e9dd2d551ad6921d8bb8c94ac820f29853c134248254e8ccb8
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

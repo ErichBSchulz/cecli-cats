@@ -1,0 +1,7 @@
+name: zipper
+uuid: de1e1dbd-0dbe-43dc-8e4b-b02665a7e4b2
+hash: 40f71bf93d8649b61469bccf69109c7258a729249d6ba31136132b421353b9e1
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

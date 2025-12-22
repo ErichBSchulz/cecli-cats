@@ -1,0 +1,7 @@
+name: kindergarten-garden
+uuid: 23f338b7-980d-4523-bbe0-08914bffef53
+hash: 8a7a2752d3d5e476252f58bd57723cf0ad343dc43a5573d8d8cb3d82821eed7b
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

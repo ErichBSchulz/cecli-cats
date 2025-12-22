@@ -1,0 +1,7 @@
+name: go-counting
+uuid: a68d8232-6276-41ea-b12e-14785f959497
+hash: 059f9c9264a8a8f51070e569c3278b95cbf60c1049ec43127ca04847303fdd2d
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

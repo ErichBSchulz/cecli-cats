@@ -1,0 +1,7 @@
+name: simple-cipher
+uuid: fda1affe-30a8-4012-a0a7-d70ffa1e6f8a
+hash: db2ff9d97ab4557bf59821b0756bf3292158fe41a9453a28f2220c4148b5adb1
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

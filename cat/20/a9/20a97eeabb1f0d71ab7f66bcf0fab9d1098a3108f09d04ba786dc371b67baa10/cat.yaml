@@ -1,0 +1,7 @@
+name: clock
+uuid: 99906caf-7b01-4bfd-a434-48ccd4369843
+hash: 20a97eeabb1f0d71ab7f66bcf0fab9d1098a3108f09d04ba786dc371b67baa10
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

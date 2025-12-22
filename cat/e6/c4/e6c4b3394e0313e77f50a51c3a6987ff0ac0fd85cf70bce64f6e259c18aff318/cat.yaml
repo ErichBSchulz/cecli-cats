@@ -1,0 +1,7 @@
+name: robot-name
+uuid: 8802a9a4-4338-4652-bbd4-b4a04cb7aa14
+hash: e6c4b3394e0313e77f50a51c3a6987ff0ac0fd85cf70bce64f6e259c18aff318
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

@@ -1,0 +1,7 @@
+name: rest-api
+uuid: 10b48b4b-1ae9-4511-b7d6-f60af001ef00
+hash: 7be6d259bae5ce3ccafa5c4728532f27206ee359f6033a14f3cc9a2158551b46
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

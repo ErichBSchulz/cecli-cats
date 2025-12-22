@@ -1,0 +1,7 @@
+name: promises
+uuid: e70c97f0-c9f0-4fae-82e6-4173384fdc65
+hash: dc0285211df370a3affbd310ccd516a24389903b159c6ca926604df4d0b89421
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

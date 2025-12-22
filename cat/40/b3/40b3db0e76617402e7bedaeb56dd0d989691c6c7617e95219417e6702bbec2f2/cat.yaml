@@ -1,0 +1,7 @@
+name: binary
+uuid: 8ea5db49-ad3d-4daa-9bb0-e61ee5a77b79
+hash: 40b3db0e76617402e7bedaeb56dd0d989691c6c7617e95219417e6702bbec2f2
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

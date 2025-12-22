@@ -1,6 +1,0 @@
-uuid: 02a2a1f3-63fa-44aa-9380-6497a3a85352
-hash: c8ae91af55cd66b3c9cb2badf293d90addcc581f9e1c15a29d0f065b34fe7683
-language: cpp
-sets:
-- polyglot
-source: https://github.com/exercism/cpp

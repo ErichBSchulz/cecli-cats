@@ -1,0 +1,7 @@
+name: react
+uuid: 5392a82c-a772-4001-b159-72720747629b
+hash: e12819a45c08f28bc15903f2d57207d351e6e028a9f7f66e4a37814861269e91
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

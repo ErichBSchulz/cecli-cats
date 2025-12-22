@@ -1,0 +1,7 @@
+name: space-age
+uuid: f4110913-81a6-405f-ac6f-76ba760c8352
+hash: c3a3653a12557d87dabb5c1d0b4874f9f5fdbeb0eea20c63852e687c8038f788
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

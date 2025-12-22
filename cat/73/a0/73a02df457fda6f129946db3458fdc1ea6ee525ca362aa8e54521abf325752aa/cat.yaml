@@ -1,0 +1,7 @@
+name: accumulate
+uuid: 3167a1c8-4828-4744-900c-9b1120774150
+hash: 73a02df457fda6f129946db3458fdc1ea6ee525ca362aa8e54521abf325752aa
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

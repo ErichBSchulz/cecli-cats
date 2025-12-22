@@ -1,0 +1,7 @@
+name: gigasecond
+uuid: d54c7ffa-742a-4a62-b6a7-1981d6849624
+hash: f8932769327887cd7884fb97ec3742ac673ca1f905e4e1dd3fa720458b3a54e0
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

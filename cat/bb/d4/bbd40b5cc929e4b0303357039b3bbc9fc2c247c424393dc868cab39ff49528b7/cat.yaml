@@ -1,0 +1,7 @@
+name: luhn-from
+uuid: 45662181-5593-4e03-9295-f18429a7e4fb
+hash: bbd40b5cc929e4b0303357039b3bbc9fc2c247c424393dc868cab39ff49528b7
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

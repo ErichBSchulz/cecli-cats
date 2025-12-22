@@ -1,0 +1,7 @@
+name: phone-number
+uuid: d60b6834-f796-4b64-a173-cd49f8eca2c7
+hash: 2cf6b64acf34df001e085824d9abe6ed550ba312bd950702c1149d1d7e366b93
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

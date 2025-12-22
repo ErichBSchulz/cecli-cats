@@ -1,0 +1,7 @@
+name: zipper
+uuid: 97488a93-9a7a-40de-91e7-130261dcee18
+hash: 53f15bd47e10ab2c2e028b9c236e27d1c45fd901a31b31904db258ae2f69b72a
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

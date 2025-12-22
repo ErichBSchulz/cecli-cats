@@ -1,0 +1,7 @@
+name: complex-numbers
+uuid: ce0cf03a-4698-4a63-99dc-acad9893f584
+hash: 4fe28ff186b117faedc4c2d194fd676084881f6c947f37887ef7e79e76813c6f
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

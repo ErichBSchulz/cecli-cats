@@ -1,0 +1,7 @@
+name: grade-school
+uuid: 23372a55-e629-454d-a629-e6589ba05a8c
+hash: 1156ed30807b461ed369d33d97ec457d8dbf6dd3a32189c4506c47094fd6dbd4
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

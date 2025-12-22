@@ -1,0 +1,7 @@
+name: gigasecond
+uuid: 39a4c8c5-e73a-401b-b856-c55a2d425a2c
+hash: 7f315465599feb2299435dc29838dfc98c6ca33a6ca2334a8419f5e6811c2219
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

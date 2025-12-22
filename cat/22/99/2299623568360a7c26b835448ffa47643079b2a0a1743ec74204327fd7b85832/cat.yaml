@@ -1,0 +1,7 @@
+name: transpose
+uuid: d715c049-d672-4dcf-b3e9-5054b213117b
+hash: 2299623568360a7c26b835448ffa47643079b2a0a1743ec74204327fd7b85832
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

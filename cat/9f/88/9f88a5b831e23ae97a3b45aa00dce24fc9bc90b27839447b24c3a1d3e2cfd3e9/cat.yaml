@@ -1,0 +1,7 @@
+name: pig-latin
+uuid: e194e60f-8aaf-4805-ac6b-2e281a110199
+hash: 9f88a5b831e23ae97a3b45aa00dce24fc9bc90b27839447b24c3a1d3e2cfd3e9
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

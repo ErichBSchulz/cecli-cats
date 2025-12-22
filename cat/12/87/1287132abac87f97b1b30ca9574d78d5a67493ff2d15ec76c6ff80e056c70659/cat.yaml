@@ -1,0 +1,7 @@
+name: all-your-base
+uuid: 7ecb4a9f-9198-412d-aa7b-32837bc9be36
+hash: 1287132abac87f97b1b30ca9574d78d5a67493ff2d15ec76c6ff80e056c70659
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

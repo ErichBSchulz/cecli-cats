@@ -1,0 +1,7 @@
+name: book-store
+uuid: 518a0c04-4cbb-4b62-9f84-146a7ab3b3f4
+hash: bdbc9e4ea249e7cccdf1c0e7974c56051be02a3f3567b22eb019da7dd3415566
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

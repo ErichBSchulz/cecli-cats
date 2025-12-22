@@ -1,0 +1,7 @@
+name: book-store
+uuid: 35d73ae4-8f1b-4857-9bcb-3a6f1b9cf133
+hash: e22ab6c9c8dbcd9e44af33c4ae51a947722d75c89223db9a194d5fd7b69437a7
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

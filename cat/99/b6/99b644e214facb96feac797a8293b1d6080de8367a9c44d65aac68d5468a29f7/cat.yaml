@@ -1,0 +1,7 @@
+name: robot-name
+uuid: c4858d33-0508-4c6a-a3cf-afd8e8437aa3
+hash: 99b644e214facb96feac797a8293b1d6080de8367a9c44d65aac68d5468a29f7
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

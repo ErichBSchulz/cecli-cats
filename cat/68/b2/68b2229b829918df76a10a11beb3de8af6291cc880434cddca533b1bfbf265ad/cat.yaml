@@ -1,0 +1,7 @@
+name: poker
+uuid: 96f565bf-7d14-48ce-b638-d31c1529315f
+hash: 68b2229b829918df76a10a11beb3de8af6291cc880434cddca533b1bfbf265ad
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

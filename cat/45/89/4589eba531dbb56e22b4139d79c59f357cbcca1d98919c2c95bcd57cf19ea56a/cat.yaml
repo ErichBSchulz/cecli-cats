@@ -1,0 +1,7 @@
+name: scale-generator
+uuid: 37b03a5e-58fe-4e9a-91bb-a40386fdb115
+hash: 4589eba531dbb56e22b4139d79c59f357cbcca1d98919c2c95bcd57cf19ea56a
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

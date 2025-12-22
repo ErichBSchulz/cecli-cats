@@ -1,0 +1,7 @@
+name: meetup
+uuid: 01d8d677-62f0-43e3-866c-8fea747d0da1
+hash: d1780edce9117ba74283a4be6ac16bf715520c3d42cb1baeaf32271e31f359fb
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

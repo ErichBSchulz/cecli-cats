@@ -1,0 +1,7 @@
+name: sublist
+uuid: f9e63efc-f391-4aae-83b7-3e0027bd1780
+hash: c248f985ae0baf3fb80ae8bcab52b9644d992bbc5187b0a5375d1f5bf89994b4
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

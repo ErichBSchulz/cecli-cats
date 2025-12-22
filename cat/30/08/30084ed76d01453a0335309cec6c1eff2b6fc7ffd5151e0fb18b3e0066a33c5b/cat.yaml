@@ -1,0 +1,7 @@
+name: go-counting
+uuid: 29721b3e-2b7e-40fe-866a-ad845e126703
+hash: 30084ed76d01453a0335309cec6c1eff2b6fc7ffd5151e0fb18b3e0066a33c5b
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

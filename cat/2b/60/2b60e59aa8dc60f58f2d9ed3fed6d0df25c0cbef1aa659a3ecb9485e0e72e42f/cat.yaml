@@ -1,0 +1,7 @@
+name: simple-linked-list
+uuid: 442e7b00-dc0f-45f2-8227-11e545ab217b
+hash: 2b60e59aa8dc60f58f2d9ed3fed6d0df25c0cbef1aa659a3ecb9485e0e72e42f
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

@@ -1,0 +1,7 @@
+name: book-store
+uuid: 23c451ae-2adc-4d54-b64a-b3d82b076ff4
+hash: 73488e20a9a503b7852005c6cd821307d314bee69063d822b86d69327f7c5c42
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: wordy
+uuid: 8b99a319-510a-4e10-841f-f875e2118e15
+hash: 3c69451b3aa6ee241ea2892ac2b9c738853f533064b86a0434b4142ac2580074
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

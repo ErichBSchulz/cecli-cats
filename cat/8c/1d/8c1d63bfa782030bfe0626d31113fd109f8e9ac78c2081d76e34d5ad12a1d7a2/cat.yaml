@@ -1,0 +1,7 @@
+name: list-ops
+uuid: 7cdcad46-de39-43ba-9d72-43b17a990a67
+hash: 8c1d63bfa782030bfe0626d31113fd109f8e9ac78c2081d76e34d5ad12a1d7a2
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

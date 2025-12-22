@@ -1,0 +1,7 @@
+name: series
+uuid: abd108a2-32bb-4096-b008-1732e55f7ee8
+hash: 8235138580cb64db9eec1c72774613a5f7d28ce346e4e2e1e9d90fb0042e1523
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

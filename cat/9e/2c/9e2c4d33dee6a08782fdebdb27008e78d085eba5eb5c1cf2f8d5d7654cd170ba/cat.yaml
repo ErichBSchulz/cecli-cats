@@ -1,0 +1,7 @@
+name: word-count
+uuid: 043b201a-a0f2-4e60-a5df-c4e04c6dfbb5
+hash: 9e2c4d33dee6a08782fdebdb27008e78d085eba5eb5c1cf2f8d5d7654cd170ba
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

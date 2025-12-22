@@ -1,0 +1,7 @@
+name: react
+uuid: 4b4e9f11-70ea-40b6-9483-e0f624c53d0c
+hash: 42ea1e7e69d89261a0c8215f54b985d8efba3d20a0d30ecc23b54a2e8cb9f36a
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

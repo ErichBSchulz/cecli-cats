@@ -1,0 +1,7 @@
+name: pig-latin
+uuid: 1e6a7fb8-3674-4098-a568-fa1b8c6c91bf
+hash: adcc945df40ba212605f665c4adf5c5e7e1d186d4af8b8256a1726becaa5dd0f
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

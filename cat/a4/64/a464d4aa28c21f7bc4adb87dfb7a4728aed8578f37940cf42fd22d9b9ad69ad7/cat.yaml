@@ -1,0 +1,7 @@
+name: transpose
+uuid: 976287e2-c4f3-4494-8865-c883aefd5c7a
+hash: a464d4aa28c21f7bc4adb87dfb7a4728aed8578f37940cf42fd22d9b9ad69ad7
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

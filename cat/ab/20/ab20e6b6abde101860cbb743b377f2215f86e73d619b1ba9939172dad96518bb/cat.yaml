@@ -1,0 +1,7 @@
+name: beer-song
+uuid: dbfcde78-4a92-4095-87c4-becd072b7963
+hash: ab20e6b6abde101860cbb743b377f2215f86e73d619b1ba9939172dad96518bb
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

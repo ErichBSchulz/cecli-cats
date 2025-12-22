@@ -1,0 +1,7 @@
+name: pov
+uuid: c3dd5d07-e19c-4b93-a8fa-3774472339a0
+hash: d5bdc7322bc55174da9d9d822969ceb8f4adaf611538d74e7a6898605f6e0448
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

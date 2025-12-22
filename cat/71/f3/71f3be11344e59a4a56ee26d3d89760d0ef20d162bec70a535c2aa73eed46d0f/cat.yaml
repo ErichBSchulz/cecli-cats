@@ -1,0 +1,7 @@
+name: book-store
+uuid: 18420515-6b41-4144-936c-37e962d07c9c
+hash: 71f3be11344e59a4a56ee26d3d89760d0ef20d162bec70a535c2aa73eed46d0f
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

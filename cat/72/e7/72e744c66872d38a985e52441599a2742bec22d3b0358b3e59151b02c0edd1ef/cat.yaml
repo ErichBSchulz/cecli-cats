@@ -1,0 +1,7 @@
+name: word-search
+uuid: a5d2d239-9e55-4868-b731-6fea0b42c329
+hash: 72e744c66872d38a985e52441599a2742bec22d3b0358b3e59151b02c0edd1ef
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

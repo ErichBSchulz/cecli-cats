@@ -1,0 +1,7 @@
+name: space-age
+uuid: ffa5daf3-1af6-4468-a28c-0fd9a1cef037
+hash: 6402d1563c51e4415a4ec2ce4f91bee357339ad8deffbdc0632d17a61cf2a6e6
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

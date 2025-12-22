@@ -1,0 +1,7 @@
+name: counter
+uuid: a3e0a4a8-80c4-4ef7-a249-83fd2116e2ce
+hash: 24a68904b4d478ca62c1fbd14b003f92619998873955fc4035a63410f80f9f81
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

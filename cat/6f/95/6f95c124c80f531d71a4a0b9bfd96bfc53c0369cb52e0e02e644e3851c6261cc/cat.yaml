@@ -1,0 +1,7 @@
+name: pov
+uuid: 13c197cb-59d2-437a-9e0b-c262d68f9dc3
+hash: 6f95c124c80f531d71a4a0b9bfd96bfc53c0369cb52e0e02e644e3851c6261cc
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

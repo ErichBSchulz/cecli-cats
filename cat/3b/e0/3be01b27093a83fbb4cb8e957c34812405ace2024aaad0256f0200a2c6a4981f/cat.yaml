@@ -1,0 +1,7 @@
+name: alphametics
+uuid: 40a326a3-7608-45f8-b4b7-27cbb3185d4f
+hash: 3be01b27093a83fbb4cb8e957c34812405ace2024aaad0256f0200a2c6a4981f
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

@@ -1,0 +1,7 @@
+name: robot-name
+uuid: 44a39a35-dfb4-44a1-a0f6-074f54e5430c
+hash: 1ef55d0b84f5de449d02c447c5581f1fe63d55680b70c810461c366dab92f8e9
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

@@ -1,0 +1,7 @@
+name: dominoes
+uuid: d4c1b4ef-7323-4d2f-8b30-2b4aa0f666b5
+hash: 5b557d5313891e0b42cda0a7d6fbfdd607085ce2460a59ba65bddfb4dd8ddf97
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

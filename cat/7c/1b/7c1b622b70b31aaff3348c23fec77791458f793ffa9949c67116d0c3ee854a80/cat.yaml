@@ -1,0 +1,7 @@
+name: fizzy
+uuid: 04009df6-e9d7-4e98-a726-a88a13eb4b10
+hash: 7c1b622b70b31aaff3348c23fec77791458f793ffa9949c67116d0c3ee854a80
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

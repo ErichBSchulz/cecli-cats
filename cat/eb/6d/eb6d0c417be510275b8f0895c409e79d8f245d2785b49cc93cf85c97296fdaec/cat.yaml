@@ -1,0 +1,7 @@
+name: bowling
+uuid: 38daaa8b-3bfa-4417-8008-4ca864b6c5fb
+hash: eb6d0c417be510275b8f0895c409e79d8f245d2785b49cc93cf85c97296fdaec
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

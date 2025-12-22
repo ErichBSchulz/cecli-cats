@@ -1,0 +1,7 @@
+name: wordy
+uuid: 048e431f-ccb6-491d-a573-4a89ce9889d9
+hash: c0946992c433b273bf687f5b2a2b1e7b04389b6ba7c0f1b7454bae6460b63124
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

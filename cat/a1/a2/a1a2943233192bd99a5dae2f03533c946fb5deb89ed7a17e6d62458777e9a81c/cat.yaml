@@ -1,0 +1,7 @@
+name: dnd-character
+uuid: 477e835c-c100-4612-bf65-4c9b92a10af1
+hash: a1a2943233192bd99a5dae2f03533c946fb5deb89ed7a17e6d62458777e9a81c
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

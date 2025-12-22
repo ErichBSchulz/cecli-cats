@@ -1,0 +1,7 @@
+name: beer-song
+uuid: f8311142-8045-4f76-a4ed-2fea775f484d
+hash: 7912ae012664e6e195aea17cabe14ee39fbcef363e17959d1a4c19a92546301a
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

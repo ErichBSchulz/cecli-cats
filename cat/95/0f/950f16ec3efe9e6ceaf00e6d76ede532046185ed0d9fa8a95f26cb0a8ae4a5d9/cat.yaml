@@ -1,0 +1,7 @@
+name: say
+uuid: b28fa614-adaa-4e0c-bf32-f58a4dd8ac32
+hash: 950f16ec3efe9e6ceaf00e6d76ede532046185ed0d9fa8a95f26cb0a8ae4a5d9
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

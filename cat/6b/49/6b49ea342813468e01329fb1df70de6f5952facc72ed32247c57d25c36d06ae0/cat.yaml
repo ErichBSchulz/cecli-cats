@@ -1,0 +1,7 @@
+name: tree-building
+uuid: e2e61bc8-7c78-4799-8229-d78cdcabab77
+hash: 6b49ea342813468e01329fb1df70de6f5952facc72ed32247c57d25c36d06ae0
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

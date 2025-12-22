@@ -1,0 +1,7 @@
+name: resistor-color-trio
+uuid: 3cf98e6c-911f-4921-bfc8-7c0f84d49e19
+hash: ce48019c56a20afa60c62413f00ea11e8296da10e56bb85c395c36587db3445d
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

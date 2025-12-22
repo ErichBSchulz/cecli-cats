@@ -1,0 +1,7 @@
+name: parallel-letter-frequency
+uuid: 59599275-56da-4eba-9d03-e679ad4d38dc
+hash: 5bb0ecc0f5ead09a3b203de5320f885abc4761fb7bd3bf06695452647d22ffb5
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

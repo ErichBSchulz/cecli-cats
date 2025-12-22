@@ -1,0 +1,7 @@
+name: hexadecimal
+uuid: f35f009f-66e3-411d-a00b-638101ab26c1
+hash: 01e00b16c9b1efdb098c1134b0ff75642fc957fdfcff2e6f9e69b319dd237a7e
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

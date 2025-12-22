@@ -1,0 +1,7 @@
+name: food-chain
+uuid: b2034bf3-3289-427f-adb4-3c2c8a0ba51b
+hash: 607cf0545d5d2f8d3a9c17d6e0877db9314337f4472832d3263e59d1c8ac7872
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

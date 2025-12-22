@@ -1,0 +1,7 @@
+name: scale-generator
+uuid: 8f79ca4e-51d1-40bc-88d8-78ca16469301
+hash: b638477d26fb38ceac46c9c63d58a80015467d83e3057b62557e7390b43100b5
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

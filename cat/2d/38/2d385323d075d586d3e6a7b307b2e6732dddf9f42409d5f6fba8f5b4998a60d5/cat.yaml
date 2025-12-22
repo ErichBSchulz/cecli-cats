@@ -1,0 +1,7 @@
+name: bowling
+uuid: f6cd4851-4cb8-4f66-bdc9-d4563e6dfa90
+hash: 2d385323d075d586d3e6a7b307b2e6732dddf9f42409d5f6fba8f5b4998a60d5
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

@@ -1,0 +1,7 @@
+name: killer-sudoku-helper
+uuid: e5fb2a76-aa69-47b7-af4d-ab51b4521329
+hash: 10d3bd8cb7ed6ad0747fb9bd6b486f8fa1fac2885828163a846cf2bd0f0e8e24
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

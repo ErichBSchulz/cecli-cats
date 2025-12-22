@@ -1,0 +1,7 @@
+name: word-search
+uuid: 56035754-adb9-446a-a1f2-f23141569f6a
+hash: baefa2c6c89e18916cfc1156dcd2b2d05f4220922a42860d8955480416835f69
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

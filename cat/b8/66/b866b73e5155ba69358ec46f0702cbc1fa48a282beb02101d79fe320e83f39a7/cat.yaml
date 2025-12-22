@@ -1,0 +1,7 @@
+name: scale-generator
+uuid: 793607b4-5b57-40d1-8508-a1444844da82
+hash: b866b73e5155ba69358ec46f0702cbc1fa48a282beb02101d79fe320e83f39a7
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

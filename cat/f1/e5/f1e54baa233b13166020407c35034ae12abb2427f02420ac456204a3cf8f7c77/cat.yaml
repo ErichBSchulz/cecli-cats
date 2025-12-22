@@ -1,0 +1,7 @@
+name: paasio
+uuid: a179c797-e94c-43b1-8c0a-1b7f7d0b0fa1
+hash: f1e54baa233b13166020407c35034ae12abb2427f02420ac456204a3cf8f7c77
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

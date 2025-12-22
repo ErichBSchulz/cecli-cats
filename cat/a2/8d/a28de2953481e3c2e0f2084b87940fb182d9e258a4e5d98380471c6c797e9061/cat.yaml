@@ -1,0 +1,7 @@
+name: bank-account
+uuid: da1c651b-22f8-46a5-bd02-6ffb1f15fb3c
+hash: a28de2953481e3c2e0f2084b87940fb182d9e258a4e5d98380471c6c797e9061
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

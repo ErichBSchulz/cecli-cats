@@ -1,0 +1,7 @@
+name: twelve-days
+uuid: f1ca1b5a-8d70-4233-b8a2-a346b290372e
+hash: f959a4fb9cf6d86ed49d22643b9ccb7fb2ece666df4c176ad677e40fcc03c3bc
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

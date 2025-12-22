@@ -1,0 +1,7 @@
+name: two-bucket
+uuid: f859ff39-9e26-4123-8fc1-cdbefc9f7ab2
+hash: 5fcb1b66f904ec6cafb6bcb355f6ef547467f898cb7bf69ecd504c2a16d29e68
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

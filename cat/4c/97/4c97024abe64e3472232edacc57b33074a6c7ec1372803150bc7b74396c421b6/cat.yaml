@@ -1,0 +1,7 @@
+name: forth
+uuid: 6a01cecf-7fb4-4865-a7af-98e24f56c15c
+hash: 4c97024abe64e3472232edacc57b33074a6c7ec1372803150bc7b74396c421b6
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

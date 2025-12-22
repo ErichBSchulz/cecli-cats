@@ -1,0 +1,7 @@
+name: palindrome-products
+uuid: 0a4de7a2-8594-4b2d-b62e-46cb98020f25
+hash: 7931d7be496513bf2f1722ff4172e28fd03caa625982859c70cfd52130766883
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

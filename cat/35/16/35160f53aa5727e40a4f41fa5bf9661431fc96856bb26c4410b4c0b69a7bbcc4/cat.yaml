@@ -1,0 +1,7 @@
+name: state-of-tic-tac-toe
+uuid: 6b5c74f5-82ff-437d-875b-5ea76e7aac06
+hash: 35160f53aa5727e40a4f41fa5bf9661431fc96856bb26c4410b4c0b69a7bbcc4
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

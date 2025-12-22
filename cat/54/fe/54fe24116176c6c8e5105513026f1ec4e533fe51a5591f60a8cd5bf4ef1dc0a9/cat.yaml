@@ -1,0 +1,7 @@
+name: rational-numbers
+uuid: 296f0edb-b8e8-4cb1-94ea-e0c53c4c6f12
+hash: 54fe24116176c6c8e5105513026f1ec4e533fe51a5591f60a8cd5bf4ef1dc0a9
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

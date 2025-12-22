@@ -1,0 +1,7 @@
+name: wordy
+uuid: 84f74f3e-d362-409c-87f9-7d89b919580e
+hash: 658d43a1785f9b5fe889436e01a7978a4402877811d46995caf63d21e77041e1
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

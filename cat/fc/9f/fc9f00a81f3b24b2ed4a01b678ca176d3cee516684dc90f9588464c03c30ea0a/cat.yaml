@@ -1,0 +1,7 @@
+name: error-handling
+uuid: 819c4b66-93b7-42e4-951d-d95a664a5acc
+hash: fc9f00a81f3b24b2ed4a01b678ca176d3cee516684dc90f9588464c03c30ea0a
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

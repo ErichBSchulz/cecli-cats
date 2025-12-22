@@ -1,0 +1,7 @@
+name: tournament
+uuid: bb8c6309-4c4c-417c-97e7-17256eb62ef7
+hash: 91d0d9b6f56867aa071963a0a2ae4aa863d6187ee38c878cfc043add0d0a95a4
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: alphametics
+uuid: 5f075e44-9eaf-4b0c-9178-10fb3c464562
+hash: e916977571c2d9003205fe090ca1fd2601ae27743a67b569d1f76369e0618c58
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

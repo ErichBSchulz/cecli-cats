@@ -1,0 +1,7 @@
+name: connect
+uuid: 427beaf0-6d92-4297-b6ce-b127792e82ae
+hash: 4a95444442fde439f6d25da23875e38d0f602faec533c7d5db6253d11eb9ba65
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

@@ -1,0 +1,7 @@
+name: octal
+uuid: 70149402-0fd0-4529-8b72-c4dac2b7e87e
+hash: ffc4c8ddb7a79c855a454f56939582477aef3475334c7beeca6e936aa25dd8b0
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

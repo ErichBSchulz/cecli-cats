@@ -1,0 +1,7 @@
+name: zebra-puzzle
+uuid: 69e6d230-6f51-4309-b201-b55d326b66c8
+hash: c625b85b5a66927bd542ab11327abc54f914e6a4f0db43edabe5dc0c0283d3f4
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

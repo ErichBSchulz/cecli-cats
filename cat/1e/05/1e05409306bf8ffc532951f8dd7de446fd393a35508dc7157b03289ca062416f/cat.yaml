@@ -1,0 +1,7 @@
+name: rest-api
+uuid: eda9db2d-92a4-4050-ae9c-dd95d80de14e
+hash: 1e05409306bf8ffc532951f8dd7de446fd393a35508dc7157b03289ca062416f
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

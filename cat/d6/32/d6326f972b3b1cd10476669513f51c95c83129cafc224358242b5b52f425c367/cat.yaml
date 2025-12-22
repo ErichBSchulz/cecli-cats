@@ -1,0 +1,7 @@
+name: affine-cipher
+uuid: 422770d6-3ecc-4f07-bc00-7fe1a249fea1
+hash: d6326f972b3b1cd10476669513f51c95c83129cafc224358242b5b52f425c367
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

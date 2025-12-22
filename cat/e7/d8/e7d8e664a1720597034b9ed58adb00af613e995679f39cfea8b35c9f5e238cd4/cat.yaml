@@ -1,0 +1,7 @@
+name: doubly-linked-list
+uuid: 974df8bd-2683-47bb-a5e8-cef474560327
+hash: e7d8e664a1720597034b9ed58adb00af613e995679f39cfea8b35c9f5e238cd4
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

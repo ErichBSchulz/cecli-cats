@@ -1,0 +1,7 @@
+name: variable-length-quantity
+uuid: f1d22b7c-938a-4097-a69a-95d2d15f523e
+hash: 46dad8cd7565691e85f3e46ed1b85463c25dd052869b1daa9555728c40d21f18
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

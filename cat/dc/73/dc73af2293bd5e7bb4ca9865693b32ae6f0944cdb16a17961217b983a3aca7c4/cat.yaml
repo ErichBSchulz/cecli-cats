@@ -1,0 +1,7 @@
+name: food-chain
+uuid: f3bb7fa3-c0f2-4d71-b3f5-55467a35889f
+hash: dc73af2293bd5e7bb4ca9865693b32ae6f0944cdb16a17961217b983a3aca7c4
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

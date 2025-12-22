@@ -1,0 +1,7 @@
+name: crypto-square
+uuid: 5a8a4337-ee6c-4e6e-a1dc-cef417b85112
+hash: 1f9e375f4daf985eadfeb90ece41e76f8de4aa665cae22f9d461077319322b5e
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

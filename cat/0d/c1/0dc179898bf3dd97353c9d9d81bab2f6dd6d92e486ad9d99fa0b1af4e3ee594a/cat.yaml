@@ -1,0 +1,7 @@
+name: robot-simulator
+uuid: 829c599b-3d3b-4549-90c8-a3b47be98d89
+hash: 0dc179898bf3dd97353c9d9d81bab2f6dd6d92e486ad9d99fa0b1af4e3ee594a
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

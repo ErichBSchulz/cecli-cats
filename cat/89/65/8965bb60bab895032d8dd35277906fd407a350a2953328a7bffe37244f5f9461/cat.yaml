@@ -1,0 +1,7 @@
+name: pig-latin
+uuid: 1ad0f8be-4e6e-4379-bdd8-63bcd628e682
+hash: 8965bb60bab895032d8dd35277906fd407a350a2953328a7bffe37244f5f9461
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

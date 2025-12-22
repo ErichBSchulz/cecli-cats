@@ -1,0 +1,7 @@
+name: parallel-letter-frequency
+uuid: 9220867a-f71e-443f-a2fe-f11714818d74
+hash: 9692fc33fe4612d09c336416666fb45a7844b2fe272464f594040fa6f793c5df
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

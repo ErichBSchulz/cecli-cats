@@ -1,0 +1,7 @@
+name: spiral-matrix
+uuid: 8684cff8-b9cc-4c81-b8e9-6562e85004d9
+hash: a071ab77d8c1efe980e7b57276119895fe0c90fd6ba7f93b29a2f303169e2726
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

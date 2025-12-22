@@ -1,0 +1,7 @@
+name: phone-number
+uuid: 45b33c19-a4ac-4f65-b524-a2e29b480918
+hash: d99b85ce9fd741967636cae4ef9a026d187f8cf17607205a136289008740d08a
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

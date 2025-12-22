@@ -1,0 +1,7 @@
+name: grep
+uuid: c91b334d-e10a-4913-971d-1cd8f15f25ff
+hash: 8e89d471ba4b7521f60b5a6510c74834754b50c4647c126b7b22d90bdfc8b877
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

@@ -1,0 +1,7 @@
+name: grep
+uuid: 26ea714b-aca8-4b45-a2a3-8c99cec4e347
+hash: 93b9736f65649ccdcb93457abc9301b8cc9d0980c347f80ed957c3d4cd0a1a1f
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

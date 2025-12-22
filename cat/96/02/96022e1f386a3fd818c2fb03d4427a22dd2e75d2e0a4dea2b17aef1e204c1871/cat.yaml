@@ -1,0 +1,7 @@
+name: variable-length-quantity
+uuid: 9e76cb2b-5b3e-4137-9bd4-010859efd17f
+hash: 96022e1f386a3fd818c2fb03d4427a22dd2e75d2e0a4dea2b17aef1e204c1871
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

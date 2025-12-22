@@ -1,0 +1,7 @@
+name: perfect-numbers
+uuid: c0066e6c-c9d0-43ee-9916-df4614e0ea33
+hash: c8ae91af55cd66b3c9cb2badf293d90addcc581f9e1c15a29d0f065b34fe7683
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

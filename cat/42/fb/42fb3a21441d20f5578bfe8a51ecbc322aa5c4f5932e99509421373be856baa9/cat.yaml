@@ -1,0 +1,7 @@
+name: two-bucket
+uuid: 806c4313-c0af-4e34-82a9-addf5e63df12
+hash: 42fb3a21441d20f5578bfe8a51ecbc322aa5c4f5932e99509421373be856baa9
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

@@ -1,0 +1,7 @@
+name: twelve-days
+uuid: 05501c30-2f03-4137-b4bf-e5bdc5d6ae3d
+hash: 62a610dcc71c4a9f28525f159211a01beed46f2c91cec2e0a65061bf5c2650ba
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

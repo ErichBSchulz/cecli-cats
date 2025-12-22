@@ -1,0 +1,7 @@
+name: transpose
+uuid: a685faf0-e1f5-4dd7-b411-b3600a4b816e
+hash: aaa9483618755e1f35710281423127ae64eed7c85824d7e3b704f57195759b44
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

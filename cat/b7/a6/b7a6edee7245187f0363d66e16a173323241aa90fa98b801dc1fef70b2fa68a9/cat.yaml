@@ -1,0 +1,7 @@
+name: zebra-puzzle
+uuid: f883643b-31d4-427a-8a4d-efbaeb83739a
+hash: b7a6edee7245187f0363d66e16a173323241aa90fa98b801dc1fef70b2fa68a9
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

@@ -1,0 +1,7 @@
+name: state-of-tic-tac-toe
+uuid: 99be234a-6dc8-4cae-a8e8-98bb9adcca65
+hash: 21bd770f27d7f475f910c5feffbe9513417b21b96a95f5f26a702a313aa68776
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

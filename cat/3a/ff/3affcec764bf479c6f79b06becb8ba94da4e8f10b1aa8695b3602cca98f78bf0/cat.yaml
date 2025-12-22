@@ -1,0 +1,7 @@
+name: tree-building
+uuid: be0a59e5-3468-47de-a6a0-fb6a80beaefc
+hash: 3affcec764bf479c6f79b06becb8ba94da4e8f10b1aa8695b3602cca98f78bf0
+language: python
+sets:
+- polyglot
+source: https://github.com/exercism/python

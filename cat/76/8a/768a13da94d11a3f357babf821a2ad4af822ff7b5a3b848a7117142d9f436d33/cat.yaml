@@ -1,0 +1,7 @@
+name: simple-linked-list
+uuid: a3d936a0-a7a3-4029-baee-8ab330390d62
+hash: 768a13da94d11a3f357babf821a2ad4af822ff7b5a3b848a7117142d9f436d33
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

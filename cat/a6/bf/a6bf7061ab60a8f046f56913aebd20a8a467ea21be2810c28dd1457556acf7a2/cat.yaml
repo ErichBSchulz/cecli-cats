@@ -1,0 +1,7 @@
+name: hangman
+uuid: 591aa0c3-56bb-4b5e-bfc5-460c9294dae0
+hash: a6bf7061ab60a8f046f56913aebd20a8a467ea21be2810c28dd1457556acf7a2
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

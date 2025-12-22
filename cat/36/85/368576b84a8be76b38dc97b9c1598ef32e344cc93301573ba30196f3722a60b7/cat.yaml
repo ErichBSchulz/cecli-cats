@@ -1,0 +1,7 @@
+name: queen-attack
+uuid: 1e9912fc-d0f3-4551-960b-58dc3460645c
+hash: 368576b84a8be76b38dc97b9c1598ef32e344cc93301573ba30196f3722a60b7
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

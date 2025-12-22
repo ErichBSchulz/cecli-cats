@@ -1,0 +1,7 @@
+name: nucleotide-codons
+uuid: e2617f3c-2a55-4434-84ca-f0c526be7a32
+hash: 3c34dd375064c5db5d9e206b4d0706564c8dad5289814f501be5bc599cc01c24
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

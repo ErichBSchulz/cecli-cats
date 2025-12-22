@@ -1,0 +1,7 @@
+name: kindergarten-garden
+uuid: 15ecf3f0-9d24-4aa2-8ee1-c51b1454bdf5
+hash: 65b281da540fd2f664cb355af9ef1bb09f0028bfded19c888e0e95659e3216d0
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

@@ -1,0 +1,7 @@
+name: react
+uuid: 2220c0e8-8b30-4a9a-a80e-5a00d3258c6f
+hash: 2fe78883e05b60f9f8278d3d31ef843ef5b453c8fa7e7cea102b16cfa7baa952
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

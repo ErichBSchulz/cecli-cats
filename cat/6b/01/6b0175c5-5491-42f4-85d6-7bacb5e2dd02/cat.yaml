@@ -1,6 +1,0 @@
-uuid: 6b0175c5-5491-42f4-85d6-7bacb5e2dd02
-hash: a6dc378e8c5c0f2d2c2a64a0e7507c14d9b724cd342a0ef24ce0eb949386944b
-language: python
-sets:
-- polyglot
-source: https://github.com/exercism/python

@@ -1,6 +1,0 @@
-uuid: 91bcb3fa-6b30-45a0-8e7c-f56cd59a27dc
-hash: 6b49ea342813468e01329fb1df70de6f5952facc72ed32247c57d25c36d06ae0
-language: go
-sets:
-- polyglot
-source: https://github.com/exercism/go

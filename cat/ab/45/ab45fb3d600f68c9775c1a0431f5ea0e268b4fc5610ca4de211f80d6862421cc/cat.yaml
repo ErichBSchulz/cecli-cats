@@ -1,0 +1,7 @@
+name: sublist
+uuid: 96f99673-4526-4e89-ab53-e27843189d8d
+hash: ab45fb3d600f68c9775c1a0431f5ea0e268b4fc5610ca4de211f80d6862421cc
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

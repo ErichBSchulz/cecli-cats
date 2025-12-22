@@ -1,0 +1,7 @@
+name: bottle-song
+uuid: 42dbf3d0-5bcb-44cc-a836-9a967b2c4bc9
+hash: 28448d25a091ffd346811a8bcfbc63cac89b94f90bec5952d3412635e9ece116
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

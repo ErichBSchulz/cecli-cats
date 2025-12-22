@@ -1,0 +1,7 @@
+name: two-bucket
+uuid: 25631939-987a-4c45-82bd-a9750e2ad8b6
+hash: bab5a79f75bdadc0bbcf9c52b7e60aa8ed9c5f168a76ae2072749f8bccc47dbb
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

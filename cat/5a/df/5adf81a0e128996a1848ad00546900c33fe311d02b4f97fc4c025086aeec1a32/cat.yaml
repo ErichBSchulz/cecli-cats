@@ -1,0 +1,7 @@
+name: phone-number
+uuid: 39a91913-217f-48a9-acf7-6fbc762de3db
+hash: 5adf81a0e128996a1848ad00546900c33fe311d02b4f97fc4c025086aeec1a32
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java

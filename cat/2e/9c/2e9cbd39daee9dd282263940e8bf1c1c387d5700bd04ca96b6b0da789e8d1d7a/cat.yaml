@@ -1,0 +1,7 @@
+name: wordy
+uuid: bb48379a-4c3b-4237-b95a-b8f9485ab37c
+hash: 2e9cbd39daee9dd282263940e8bf1c1c387d5700bd04ca96b6b0da789e8d1d7a
+language: javascript
+sets:
+- polyglot
+source: https://github.com/exercism/javascript

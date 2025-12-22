@@ -1,0 +1,7 @@
+name: linked-list
+uuid: c9f10ae1-e504-4c8c-8325-304d0c70b284
+hash: bc18e901f79bf0927d8ad8cf284a2c6dc12df935ba02c2da45124169f396ae22
+language: cpp
+sets:
+- polyglot
+source: https://github.com/exercism/cpp

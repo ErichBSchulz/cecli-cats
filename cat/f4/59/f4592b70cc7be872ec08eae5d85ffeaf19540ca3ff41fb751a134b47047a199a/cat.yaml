@@ -1,0 +1,7 @@
+name: dot-dsl
+uuid: 22fe756c-d15c-49f8-b3c3-f588669fa39d
+hash: f4592b70cc7be872ec08eae5d85ffeaf19540ca3ff41fb751a134b47047a199a
+language: rust
+sets:
+- polyglot
+source: https://github.com/exercism/rust

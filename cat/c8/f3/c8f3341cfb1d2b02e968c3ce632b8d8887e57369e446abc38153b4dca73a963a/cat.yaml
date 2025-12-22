@@ -1,0 +1,7 @@
+name: palindrome-products
+uuid: dd4f5f9c-71fd-4793-ad1d-e91089b02990
+hash: c8f3341cfb1d2b02e968c3ce632b8d8887e57369e446abc38153b4dca73a963a
+language: go
+sets:
+- polyglot
+source: https://github.com/exercism/go

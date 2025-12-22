@@ -1,0 +1,7 @@
+name: satellite
+uuid: f09bf8bb-d388-4744-b759-b82ca1dcc995
+hash: d8a0ba16b8d5570b21b407dec4b70d7644b3cc9735c0738a80bde7c375b6688b
+language: java
+sets:
+- polyglot
+source: https://github.com/exercism/java
