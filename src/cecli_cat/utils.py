@@ -12,6 +12,9 @@ def calculate_directory_hash(directory: Path) -> str:
             if file.startswith("cat") and file.endswith(".yaml"):
                 continue
 
+            if file == "LICENCE":
+                continue
+
             file_path = Path(root) / file
             # Include relative path in hash to detect structure changes
             rel_path = str(file_path.relative_to(directory))

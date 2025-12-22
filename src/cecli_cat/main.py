@@ -1,6 +1,6 @@
 import argparse
 import sys
-from cecli_cat.commands import polyglot
+from cecli_cat.commands import polyglot, rehash
 
 
 def main():
@@ -9,6 +9,7 @@ def main():
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     polyglot.add_parser(subparsers)
+    rehash.add_parser(subparsers)
 
     args = parser.parse_args()
     if hasattr(args, "func"):
