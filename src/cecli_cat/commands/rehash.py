@@ -62,7 +62,7 @@ def add_parser(subparsers):
         "rehash",
         help="Recalculate hashes for all tests",
         description="""
-        Visits every directory in 'cat/', recalculates the hash (excluding cat.yaml and LICENCE),
+        Visits every directory in 'cat/', recalculates the hash (excluding cat.yaml and LICENSE),
         and updates the cat.yaml file if the hash has changed.
         """,
     )
