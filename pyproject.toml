@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "Cecli Atomic Tests"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pytest",
+]
+
+[project.scripts]
+cecli-cat = "cecli_cat:main"
