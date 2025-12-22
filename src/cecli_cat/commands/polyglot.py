@@ -58,9 +58,9 @@ def process_test(test_dir: Path):
     dir_hash = calculate_directory_hash(test_dir)
 
     # Target path: cat/f4/7a/f47ac10b...
-    prefix1 = test_uuid[:2]
-    prefix2 = test_uuid[2:4]
-    target_dir = Path("cat") / prefix1 / prefix2 / test_uuid
+    prefix1 = dir_hash[:2]
+    prefix2 = dir_hash[2:4]
+    target_dir = Path("cat") / prefix1 / prefix2 / dir_hash
 
     logger.info(f"Migrating {test_dir} -> {target_dir}")
     logger.debug(f"UUID: {test_uuid}, Hash: {dir_hash}, Lang: {language}")
@@ -73,6 +73,7 @@ def process_test(test_dir: Path):
 
     # Create cat.yaml
     cat_data = {
+        "name": test_dir.name,
         "uuid": test_uuid,
         "hash": dir_hash,
         "language": language,
@@ -123,7 +124,7 @@ def add_parser(subparsers):
         For each test:
         1. Assigns a new UUID.
         2. Calculates a content hash.
-        3. Copies the test to cat/{uuid_prefix}/{uuid_prefix}/{uuid}.
+        3. Copies the test to cat/{hash_prefix}/{hash_prefix}/{hash}.
         4. Creates a cat.yaml metadata file.
         """,
     )
