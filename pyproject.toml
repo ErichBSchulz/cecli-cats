@@ -14,3 +14,6 @@ dependencies = [
 
 [project.scripts]
 cecli-cat = "cecli_cat:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cecli_cat.py"]
