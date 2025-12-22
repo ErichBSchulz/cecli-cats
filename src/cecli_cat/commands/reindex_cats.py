@@ -33,6 +33,7 @@ def run(args):
         try:
             with open(cat_file, "r") as f:
                 data = yaml.safe_load(f) or {}
+                data["path"] = str(cat_file.parent)
                 records.append(data)
         except Exception as e:
             logger.warning(f"Failed to read {cat_file}: {e}")
@@ -47,7 +48,7 @@ def run(args):
         fieldnames.update(record.keys())
 
     # Sort fieldnames for consistency
-    priority_fields = ["name", "uuid", "hash", "language", "sets", "source"]
+    priority_fields = ["name", "uuid", "hash", "language", "sets", "source", "path"]
     sorted_fieldnames = [f for f in priority_fields if f in fieldnames]
     sorted_fieldnames.extend(sorted(list(fieldnames - set(priority_fields))))
 
@@ -62,9 +63,8 @@ def run(args):
         for record in records:
             # Handle list fields (like sets)
             row = record.copy()
-            for k, v in row.items():
-                if isinstance(v, list):
-                    row[k] = ";".join(str(x) for x in v)
+            if "sets" in row and isinstance(row["sets"], list):
+                row["sets"] = ";".join(str(x) for x in row["sets"])
             writer.writerow(row)
 
     logger.info("Done.")
