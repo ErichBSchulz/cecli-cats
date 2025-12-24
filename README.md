@@ -1,5 +1,22 @@
 # Cecli Atomic Tests
 
+## Getting started
+
+Follow the instructions in the README in the main `cecli` repo.
+
+This means you'll want to clone this repo, probably into the a `tmp-benchmarsks`.
+
+```bash
+cd MAIN_CECLI_DIR
+mkdir -p tmp-benchmarsks # if not already clone
+cd -p tmp-benchmarsks # if not already clone
+git clone https://github.com/ErichBSchulz/cecli-cats cecli-cats
+```
+
+Use `uv` to install the `cecli-cat` script and run `cecli-cat --help` to see what it does.
+
+
+## Why test?
 Its very hard to improve what you cannot measure.
 
 Benchmarking enables us to chose the best model for our needs, and configure it to get the best out of it.
