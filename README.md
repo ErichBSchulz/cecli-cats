@@ -15,6 +15,31 @@ git clone https://github.com/ErichBSchulz/cecli-cats cecli-cats
 
 Use `uv` to install the `cecli-cat` script and run `cecli-cat --help` to see what it does.
 
+## Contributing
+
+### Atomic results
+
+Yes please!
+
+```bash
+# set $C to your name to get credit
+C=anon
+# set $B to your bencmark file dir
+B=/path/to/your/tmp.tmp-benchmarks
+# then ideally:
+tar -cvzf cat_full.$C.tar.gz -C "$B" .
+# or, **alternatively** (only grab the resultss files):
+find "$B" -name ".aider.results.json" -print0 | tar --null -cvzf cat_results.$C.tar.gz --files-from -
+```
+
+### New CATS ("excercises")
+
+As the tests get saturated we need new and novel tests.
+
+### New metrics
+
+Yes! We need metrics that move beyond pass/fail on coding tasks. This will need some thought.
+
 
 ## Why test?
 Its very hard to improve what you cannot measure.
