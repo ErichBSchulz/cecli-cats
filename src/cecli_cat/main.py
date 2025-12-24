@@ -1,6 +1,12 @@
 import argparse
 import sys
-from cecli_cat.commands import aggregate, cat_summary, polyglot, rehash_cats, reindex_cats
+from cecli_cat.commands import (
+    aggregate,
+    cat_summary,
+    polyglot,
+    rehash_cats,
+    reindex_cats,
+)
 
 
 def main():

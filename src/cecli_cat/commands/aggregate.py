@@ -77,7 +77,9 @@ def run(args):
     for res_file in files:
         run_dir = find_run_dir(res_file)
         if not run_dir:
-            logger.debug(f"Skipping {res_file}: Not inside a recognizable run directory.")
+            logger.debug(
+                f"Skipping {res_file}: Not inside a recognizable run directory."
+            )
             skipped_count += 1
             continue
 
@@ -167,7 +169,9 @@ def run(args):
                     json.dump(results, f, indent=2)
                 logger.debug(f"Saved {target_file}")
             except OSError as e:
-                logger.error(f"Failed to write results for {run_name}/{model_name}: {e}")
+                logger.error(
+                    f"Failed to write results for {run_name}/{model_name}: {e}"
+                )
 
     logger.info("Aggregation complete.")
 
