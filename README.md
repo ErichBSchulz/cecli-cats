@@ -18,8 +18,15 @@ Use `uv` to install the `cecli-cat` script:
 
 ```bash
 cd cecli-cats
+# Use --force to overwrite any existing installation
 uv tool install --force .
 cecli-cat --help
+```
+
+If you are developing `cecli-cats`, use `-e` (editable) so changes take effect immediately:
+
+```bash
+uv tool install -e .
 ```
 
 ## Contributing
