@@ -74,6 +74,14 @@ The proposed changes enable approaching a new set of more nuanced questions:
 - "How do we get the best performance from a specific model (x model)?"
 - "Which tests are best at discriminating certain optimisations?"
 
+## Filing conventions
+
+* All individual test runs live in a directory matching `YYYY-MM-DD-HH-MM-SS*`
+* Classic runs will have individual test runs in a folder `LANGUAGE/exercises/practice`,
+  where LANGUAGE is one of a defined set.
+* New CAT test runs live a directory named after a hash of its contents and
+  also all have a cat.yaml file.
+
 ## Source Attribution
 
 This is a fork of the [Aider polyglot benchmark](), based on a subset of
