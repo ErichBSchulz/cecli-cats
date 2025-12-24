@@ -13,7 +13,13 @@ cd -p tmp-benchmarsks # if not already clone
 git clone https://github.com/ErichBSchulz/cecli-cats cecli-cats
 ```
 
-Use `uv` to install the `cecli-cat` script and run `cecli-cat --help` to see what it does.
+Use `uv` to install the `cecli-cat` script:
+
+```bash
+cd cecli-cats
+uv tool install --force .
+cecli-cat --help
+```
 
 ## Contributing
 
