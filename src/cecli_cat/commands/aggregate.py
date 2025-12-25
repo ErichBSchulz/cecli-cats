@@ -7,6 +7,15 @@ import yaml
 from collections import defaultdict
 from pathlib import Path
 
+REQUIRED_KEYS = [
+    "testdir",
+    "testcase",
+    "model",
+    "edit_format",
+    "tests_outcomes",
+    "cost",
+]
+
 
 def load_index(index_file: Path):
     index = {}
@@ -59,8 +68,10 @@ def run(args):
 
     logger.info(f"Scanning {in_dir} for test runs...")
 
-    # Store as results[run_name][model_name] = [test_data, ...]
-    aggregated = defaultdict(lambda: defaultdict(list))
+    # Store as results[run_name][model_name] = {"results": [], "rejected_count": 0}
+    aggregated = defaultdict(
+        lambda: defaultdict(lambda: {"results": [], "rejected_count": 0})
+    )
 
     # We look for .aider.results.json
     try:
@@ -94,6 +105,13 @@ def run(args):
             continue
 
         model_name = res_json.get("model", "unknown")
+        bucket = aggregated[run_name][model_name]
+
+        # Validation
+        if not all(k in res_json for k in REQUIRED_KEYS):
+            logger.debug(f"Rejecting {res_file}: Missing required keys.")
+            bucket["rejected_count"] += 1
+            continue
 
         # Determine identity
         test_dir = res_file.parent
@@ -145,33 +163,61 @@ def run(args):
         except ValueError:
             res_json["run_relative_path"] = str(test_dir)
 
-        aggregated[run_name][model_name].append(res_json)
+        bucket["results"].append(res_json)
         processed_count += 1
 
     logger.info(
         f"Processed {processed_count} results (skipped {skipped_count}). Saving aggregation..."
     )
 
-    # Write output
-    for run_name, models in aggregated.items():
-        for model_name, results in models.items():
-            # Construct path: out_dir/model_name/run_name/results.json
-            # Note: Model names can contain characters not suitable for paths (e.g., :)
-            # However, user requested /runs/MODELNAME/RUNNAME. We will trust the inputs mostly,
-            # but maybe a small safety replacement for slash could be wise if model has it.
-            # Assuming typical unix fs, ':' is allowed.
+    # Prepare table data
+    table_rows = []
 
+    # Write output and collect stats
+    for run_name, models in aggregated.items():
+        for model_name, data in models.items():
+            results = data["results"]
+            rejected_count = data["rejected_count"]
+            count = len(results)
+            # Pass if any test outcome is true
+            pass_count = sum(1 for r in results if any(r.get("tests_outcomes", [])))
+
+            output_data = {
+                "summary": {
+                    "count": count,
+                    "pass": pass_count,
+                    "rejected": rejected_count,
+                },
+                "results": results,
+            }
+
+            table_rows.append(
+                (run_name, model_name, count, pass_count, rejected_count)
+            )
+
+            # Construct path: out_dir/model_name/run_name/results.json
             target_dir = out_dir / model_name / run_name
             try:
                 target_dir.mkdir(parents=True, exist_ok=True)
                 target_file = target_dir / "results.json"
                 with open(target_file, "w") as f:
-                    json.dump(results, f, indent=2)
+                    json.dump(output_data, f, indent=2)
                 logger.debug(f"Saved {target_file}")
             except OSError as e:
                 logger.error(
                     f"Failed to write results for {run_name}/{model_name}: {e}"
                 )
+
+    if not args.quiet and table_rows:
+        print(f"\n{'Run':<40} {'Model':<40} {'Count':>8} {'Pass':>8} {'Reject':>8}")
+        print("-" * 108)
+        for row in sorted(table_rows):
+            r_name, m_name, c, p, rej = row
+            # Truncate names if too long
+            r_disp = (r_name[:37] + "...") if len(r_name) > 37 else r_name
+            m_disp = (m_name[:37] + "...") if len(m_name) > 37 else m_name
+            print(f"{r_disp:<40} {m_disp:<40} {c:>8} {p:>8} {rej:>8}")
+        print()
 
     logger.info("Aggregation complete.")
 
