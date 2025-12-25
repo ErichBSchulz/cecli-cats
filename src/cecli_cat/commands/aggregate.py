@@ -191,9 +191,7 @@ def run(args):
                 "results": results,
             }
 
-            table_rows.append(
-                (run_name, model_name, count, pass_count, rejected_count)
-            )
+            table_rows.append((run_name, model_name, count, pass_count, rejected_count))
 
             # Construct path: out_dir/model_name/run_name/results.json
             target_dir = out_dir / model_name / run_name
