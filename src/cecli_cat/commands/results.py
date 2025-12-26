@@ -268,9 +268,23 @@ def run_clean(args):
                 print(f"rm -rf {shlex.quote(str(run_dir))}")
 
     # 2. Scan Aggregated Runs
-    if out_dir.exists():
-        for res_file in out_dir.rglob("results.json"):
+    search_dirs = [out_dir]
+    # If in_dir is different from out_dir, we scan it too (it might contain results)
+    if in_dir.resolve() != out_dir.resolve():
+        search_dirs.append(in_dir)
+
+    seen_aggregated = set()
+    for d in search_dirs:
+        if not d.exists():
+            continue
+        for res_file in d.rglob("results.json"):
+            # Deduplicate by absolute path
             try:
+                resolved = res_file.resolve()
+                if resolved in seen_aggregated:
+                    continue
+                seen_aggregated.add(resolved)
+
                 with open(res_file, "r") as f:
                     data = json.load(f)
                     summary = data.get("summary", {})
