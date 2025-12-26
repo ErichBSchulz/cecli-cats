@@ -237,6 +237,8 @@ def run_clean(args):
     in_dir = Path(args.in_dir)
     out_dir = Path(args.out_dir)
 
+    print("# run these commands to remove the broken runs")
+
     # 1. Scan Source Runs
     if in_dir.exists():
         # Group files by run directory
