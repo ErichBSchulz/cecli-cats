@@ -240,33 +240,36 @@ def run_clean(args):
 
     paths_to_remove = []
 
+    if not in_dir.exists():
+        logger.error(f"Input directory '{in_dir}' does not exist.")
+        return
+
     # 1. Scan Source Runs
-    if in_dir.exists():
-        # Group files by run directory
-        run_files = defaultdict(list)
-        try:
-            for res_file in in_dir.rglob(".aider.results.json"):
-                run_dir = find_run_dir(res_file)
-                if run_dir:
-                    run_files[run_dir].append(res_file)
-        except Exception as e:
-            logger.error(f"Error scanning input directory {in_dir}: {e}")
+    # Group files by run directory
+    run_files = defaultdict(list)
+    try:
+        for res_file in in_dir.rglob(".aider.results.json"):
+            run_dir = find_run_dir(res_file)
+            if run_dir:
+                run_files[run_dir].append(res_file)
+    except Exception as e:
+        logger.error(f"Error scanning input directory {in_dir}: {e}")
 
-        for run_dir, files in run_files.items():
-            rejected_count = 0
-            total_count = 0
-            for f in files:
-                total_count += 1
-                try:
-                    with open(f, "r") as fh:
-                        data = json.load(fh)
-                        if not all(k in data for k in REQUIRED_KEYS):
-                            rejected_count += 1
-                except Exception:
-                    rejected_count += 1  # count read errors as rejected/bad
+    for run_dir, files in run_files.items():
+        rejected_count = 0
+        total_count = 0
+        for f in files:
+            total_count += 1
+            try:
+                with open(f, "r") as fh:
+                    data = json.load(fh)
+                    if not all(k in data for k in REQUIRED_KEYS):
+                        rejected_count += 1
+            except Exception:
+                rejected_count += 1  # count read errors as rejected/bad
 
-            if total_count > 0 and rejected_count == total_count:
-                paths_to_remove.append(run_dir)
+        if total_count > 0 and rejected_count == total_count:
+            paths_to_remove.append(run_dir)
 
     # 2. Scan Aggregated Runs
     search_dirs = [out_dir]
