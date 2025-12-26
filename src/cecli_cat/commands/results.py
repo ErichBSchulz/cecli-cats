@@ -4,6 +4,7 @@ import json
 import logging
 import re
 import shlex
+import shutil
 import yaml
 from collections import defaultdict
 from pathlib import Path
@@ -237,7 +238,7 @@ def run_clean(args):
     in_dir = Path(args.in_dir)
     out_dir = Path(args.out_dir)
 
-    print("# run these commands to remove the broken runs")
+    paths_to_remove = []
 
     # 1. Scan Source Runs
     if in_dir.exists():
@@ -265,7 +266,7 @@ def run_clean(args):
                     rejected_count += 1  # count read errors as rejected/bad
 
             if total_count > 0 and rejected_count == total_count:
-                print(f"rm -rf {shlex.quote(str(run_dir))}")
+                paths_to_remove.append(run_dir)
 
     # 2. Scan Aggregated Runs
     search_dirs = [out_dir]
@@ -291,9 +292,41 @@ def run_clean(args):
                     count = summary.get("count", 0)
                     rejected = summary.get("rejected", 0)
                     if rejected > 0 and count == 0:
-                        print(f"rm -rf {shlex.quote(str(res_file.parent))}")
+                        paths_to_remove.append(res_file.parent)
             except Exception as e:
                 logger.debug(f"Failed to read/parse {res_file}: {e}")
+
+    if not paths_to_remove:
+        logger.info("No broken runs found.")
+        return
+
+    # Generate commands for display
+    cmds = [f"rm -rf {shlex.quote(str(p))}" for p in paths_to_remove]
+
+    if not args.yolo and not args.interactive:
+        print("# run these commands to remove the broken runs")
+        for cmd in cmds:
+            print(cmd)
+        return
+
+    # If yolo or interactive
+    if args.interactive and not args.yolo:
+        print("The following directories will be removed:")
+        for cmd in cmds:
+            print(cmd)
+        try:
+            response = input("Run these commands? [y/N] ").strip().lower()
+        except EOFError:
+            response = "n"
+        if response != "y":
+            print("Aborted.")
+            return
+
+    # Execution (yolo or interactive=yes)
+    for p in paths_to_remove:
+        if p.exists():
+            logger.info(f"Removing {p}...")
+            shutil.rmtree(p, ignore_errors=True)
 
 
 def add_parser(subparsers):
@@ -371,5 +404,15 @@ def add_parser(subparsers):
         "--out-dir",
         default="results",
         help="Output directory for aggregated results (default: results)",
+    )
+    clean_parser.add_argument(
+        "--yolo",
+        action="store_true",
+        help="Run the clean commands without confirmation",
+    )
+    clean_parser.add_argument(
+        "--interactive",
+        action="store_true",
+        help="Ask for confirmation before running clean commands",
     )
     clean_parser.set_defaults(func=run_clean)
