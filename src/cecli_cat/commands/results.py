@@ -290,7 +290,7 @@ def run_clean(args):
                     summary = data.get("summary", {})
                     count = summary.get("count", 0)
                     rejected = summary.get("rejected", 0)
-                    if count > 0 and rejected == count:
+                    if rejected > 0 and count == 0:
                         print(f"rm -rf {shlex.quote(str(res_file.parent))}")
             except Exception as e:
                 logger.debug(f"Failed to read/parse {res_file}: {e}")
