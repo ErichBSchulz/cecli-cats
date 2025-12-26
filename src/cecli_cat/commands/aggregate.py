@@ -46,7 +46,7 @@ def find_run_dir(path: Path):
     return None
 
 
-def run(args):
+def run_aggregate(args):
     # Setup logging
     level = logging.WARNING
     if args.quiet:
@@ -220,8 +220,77 @@ def run(args):
     logger.info("Aggregation complete.")
 
 
+def run_clean(args):
+    # Setup logging
+    level = logging.WARNING
+    if args.quiet:
+        level = logging.ERROR
+    elif args.verbose == 1:
+        level = logging.INFO
+    elif args.verbose >= 2:
+        level = logging.DEBUG
+
+    logging.basicConfig(level=level, format="%(message)s")
+    logger = logging.getLogger(__name__)
+
+    in_dir = Path(args.in_dir)
+    out_dir = Path(args.out_dir)
+
+    # 1. Scan Source Runs
+    if in_dir.exists():
+        # Group files by run directory
+        run_files = defaultdict(list)
+        try:
+            for res_file in in_dir.rglob(".aider.results.json"):
+                run_dir = find_run_dir(res_file)
+                if run_dir:
+                    run_files[run_dir].append(res_file)
+        except Exception as e:
+            logger.error(f"Error scanning input directory {in_dir}: {e}")
+
+        for run_dir, files in run_files.items():
+            rejected_count = 0
+            total_count = 0
+            for f in files:
+                total_count += 1
+                try:
+                    with open(f, "r") as fh:
+                        data = json.load(fh)
+                        if not all(k in data for k in REQUIRED_KEYS):
+                            rejected_count += 1
+                except Exception:
+                    rejected_count += 1  # count read errors as rejected/bad
+
+            if total_count > 0 and rejected_count == total_count:
+                print(f"Source Run (100% rejected): {run_dir}")
+
+    # 2. Scan Aggregated Runs
+    if out_dir.exists():
+        for res_file in out_dir.rglob("results.json"):
+            try:
+                with open(res_file, "r") as f:
+                    data = json.load(f)
+                    summary = data.get("summary", {})
+                    count = summary.get("count", 0)
+                    rejected = summary.get("rejected", 0)
+                    if count > 0 and rejected == count:
+                        print(f"Aggregated Run (100% rejected): {res_file.parent}")
+            except Exception as e:
+                logger.debug(f"Failed to read/parse {res_file}: {e}")
+
+
 def add_parser(subparsers):
-    parser = subparsers.add_parser(
+    results_parser = subparsers.add_parser(
+        "results",
+        help="Manage test results",
+        description="Commands for aggregating and managing test results.",
+    )
+    results_subparsers = results_parser.add_subparsers(
+        dest="results_command", required=True
+    )
+
+    # Aggregate subcommand
+    agg_parser = results_subparsers.add_parser(
         "aggregate",
         help="Aggregate test results from run directories",
         description="""
@@ -230,29 +299,60 @@ def add_parser(subparsers):
         and saves aggregated JSON files organized by Model and Run.
         """,
     )
-    parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
-    parser.add_argument(
+    agg_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    agg_parser.add_argument(
         "-v",
         "--verbose",
         action="count",
         default=0,
         help="Increase verbosity (-v, -vv)",
     )
-    parser.add_argument(
+    agg_parser.add_argument(
         "-i",
         "--in-dir",
         default="..",
         help="Input directory to scan (default: ..)",
     )
-    parser.add_argument(
+    agg_parser.add_argument(
         "-o",
         "--out-dir",
         default="results",
         help="Output directory for aggregated results (default: results)",
     )
-    parser.add_argument(
+    agg_parser.add_argument(
         "--index-file",
         default="cat/index.csv",
         help="Path to index.csv for classic test lookup (default: cat/index.csv)",
     )
-    parser.set_defaults(func=run)
+    agg_parser.set_defaults(func=run_aggregate)
+
+    # Clean subcommand
+    clean_parser = results_subparsers.add_parser(
+        "clean",
+        help="List directories with 100% rejected results",
+        description="""
+        Lists directories containing runs (source data and aggregated) that have 100% rejected results.
+        Useful for identifying failed runs that can be deleted.
+        """,
+    )
+    clean_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    clean_parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity (-v, -vv)",
+    )
+    clean_parser.add_argument(
+        "-i",
+        "--in-dir",
+        default="..",
+        help="Input directory to scan (default: ..)",
+    )
+    clean_parser.add_argument(
+        "-o",
+        "--out-dir",
+        default="results",
+        help="Output directory for aggregated results (default: results)",
+    )
+    clean_parser.set_defaults(func=run_clean)

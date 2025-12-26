@@ -1,11 +1,11 @@
 import argparse
 import sys
 from cecli_cat.commands import (
-    aggregate,
     cat_summary,
     polyglot,
     rehash_cats,
     reindex_cats,
+    results,
 )
 
 
@@ -17,7 +17,7 @@ def main():
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    aggregate.add_parser(subparsers)
+    results.add_parser(subparsers)
     polyglot.add_parser(subparsers)
     rehash_cats.add_parser(subparsers)
     reindex_cats.add_parser(subparsers)
