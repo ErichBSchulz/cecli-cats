@@ -72,7 +72,7 @@ def run(args):
 
 def add_parser(subparsers):
     parser = subparsers.add_parser(
-        "reindex_cats",
+        "reindex",
         help="Collate cat.yaml files into a CSV index",
         description="""
         Scans the input directory (recursively) for cat.yaml files, reads their content,

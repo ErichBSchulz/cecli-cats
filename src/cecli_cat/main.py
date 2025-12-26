@@ -1,10 +1,7 @@
 import argparse
 import sys
 from cecli_cat.commands import (
-    cat_summary,
-    polyglot,
-    rehash_cats,
-    reindex_cats,
+    cats,
     results,
 )
 
@@ -17,11 +14,8 @@ def main():
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    cats.add_parser(subparsers)
     results.add_parser(subparsers)
-    polyglot.add_parser(subparsers)
-    rehash_cats.add_parser(subparsers)
-    reindex_cats.add_parser(subparsers)
-    cat_summary.add_parser(subparsers)
 
     args = parser.parse_args()
     if hasattr(args, "func"):

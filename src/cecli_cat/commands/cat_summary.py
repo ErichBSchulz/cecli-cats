@@ -59,7 +59,7 @@ def run(args):
 
 def add_parser(subparsers):
     parser = subparsers.add_parser(
-        "cat_summary",
+        "summary",
         help="Summarize tests from the CSV index",
         description="""
         Reads the CSV index file and produces a summary of tests per language.

@@ -59,7 +59,7 @@ def run(args):
 
 def add_parser(subparsers):
     parser = subparsers.add_parser(
-        "rehash_cats",
+        "rehash",
         help="Recalculate hashes for all tests",
         description="""
         Visits every directory in 'cat/', recalculates the hash (excluding cat.yaml and LICENSE),
