@@ -329,7 +329,7 @@ def add_parser(subparsers):
     # Clean subcommand
     clean_parser = results_subparsers.add_parser(
         "clean",
-        help="List directories with 100% rejected results",
+        help="List directories with 100%% rejected results",
         description="""
         Lists directories containing runs (source data and aggregated) that have 100% rejected results.
         Useful for identifying failed runs that can be deleted.
