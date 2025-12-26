@@ -3,6 +3,7 @@ import csv
 import json
 import logging
 import re
+import shlex
 import yaml
 from collections import defaultdict
 from pathlib import Path
@@ -262,7 +263,7 @@ def run_clean(args):
                     rejected_count += 1  # count read errors as rejected/bad
 
             if total_count > 0 and rejected_count == total_count:
-                print(f"Source Run (100% rejected): {run_dir}")
+                print(f"rm -rf {shlex.quote(str(run_dir))}")
 
     # 2. Scan Aggregated Runs
     if out_dir.exists():
@@ -274,7 +275,7 @@ def run_clean(args):
                     count = summary.get("count", 0)
                     rejected = summary.get("rejected", 0)
                     if count > 0 and rejected == count:
-                        print(f"Aggregated Run (100% rejected): {res_file.parent}")
+                        print(f"rm -rf {shlex.quote(str(res_file.parent))}")
             except Exception as e:
                 logger.debug(f"Failed to read/parse {res_file}: {e}")
 
