@@ -21,7 +21,9 @@ REQUIRED_KEYS = [
 ]
 
 DEFAULT_CONSOLIDATED_FILE = "results.csv"
+QUIET_GROUP_BY_COLS = ["model"]
 DEFAULT_GROUP_BY_COLS = ["model", "language", "edit_format"]
+QUIET_OUTCOME_COLS = ["passed"]
 DEFAULT_OUTCOME_COLS = [
     "prompt_tokens",
     "cost",
@@ -517,7 +519,7 @@ def run_crosstab(args):
             # Defaults
             candidates = []
             if args.quiet:
-                candidates = ["model"]
+                candidates = list(QUIET_GROUP_BY_COLS)
             else:
                 candidates = list(DEFAULT_GROUP_BY_COLS)
 
@@ -548,8 +550,9 @@ def run_crosstab(args):
         else:
             # Defaults
             candidates = []
-            if "passed" in df.columns:
-                candidates.append("passed")
+            for col in QUIET_OUTCOME_COLS:
+                if col in df.columns:
+                    candidates.append(col)
 
             if not args.quiet:
                 # Normal
@@ -859,14 +862,24 @@ Data Transformations:
         default=DEFAULT_CONSOLIDATED_FILE,
         help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
     )
-    crosstab_parser.add_argument(
-        "--group-by",
-        help=f"Comma-separated list of columns to group by (default: {', '.join(DEFAULT_GROUP_BY_COLS)})",
+
+    gb_help = (
+        "Comma-separated list of columns to group by. Defaults vary by verbosity: "
+        f"Quiet (-q): {', '.join(QUIET_GROUP_BY_COLS)}. "
+        f"Normal: {', '.join(DEFAULT_GROUP_BY_COLS)}. "
+        "Verbose (-v): Adds tests_outcomes, set_*. "
+        "Very Verbose (-vv): Adds all numeric fields."
     )
-    crosstab_parser.add_argument(
-        "--outcome",
-        help=f"Comma-separated list of columns to calculate metrics for (default: {', '.join(DEFAULT_OUTCOME_COLS)})",
+    crosstab_parser.add_argument("--group-by", help=gb_help)
+
+    out_help = (
+        "Comma-separated list of columns to calculate metrics for. Defaults vary by verbosity: "
+        f"Quiet (-q): {', '.join(QUIET_OUTCOME_COLS)}. "
+        f"Normal: Adds {', '.join(DEFAULT_OUTCOME_COLS)}. "
+        f"Verbose (-v): Adds {', '.join(VERBOSE_OUTCOME_COLS)}. "
+        "Very Verbose (-vv): Adds all numeric fields."
     )
+    crosstab_parser.add_argument("--outcome", help=out_help)
     add_decimals_arg(crosstab_parser)
     add_common_args(crosstab_parser)
     crosstab_parser.set_defaults(func=run_crosstab)
