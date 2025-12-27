@@ -539,7 +539,6 @@ def run_crosstab(args):
                         "cost",
                         "duration",
                         "completion_tokens",
-                        "thinking_tokens",
                     ]
                 )
 
@@ -547,6 +546,7 @@ def run_crosstab(args):
                 # V
                 candidates.extend(
                     [
+                        "thinking_tokens",
                         "indentation_errors",
                         "lazy_comments",
                         "map_tokens",
