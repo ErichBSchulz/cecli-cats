@@ -29,6 +29,20 @@ DEFAULT_OUTCOME_COLS = [
     "completion_tokens",
 ]
 
+VERBOSE_OUTCOME_COLS = [
+    "thinking_tokens",
+    "indentation_errors",
+    "lazy_comments",
+    "map_tokens",
+    "num_error_outputs",
+    "num_exhausted_context_windows",
+    "num_malformed_responses",
+    "num_user_asks",
+    "reasoning_effort",
+    "syntax_errors",
+    "test_timeouts",
+]
+
 
 def setup_logging(args):
     level = logging.WARNING
@@ -543,21 +557,7 @@ def run_crosstab(args):
 
             if args.verbose >= 1:
                 # V
-                candidates.extend(
-                    [
-                        "thinking_tokens",
-                        "indentation_errors",
-                        "lazy_comments",
-                        "map_tokens",
-                        "num_error_outputs",
-                        "num_exhausted_context_windows",
-                        "num_malformed_responses",
-                        "num_user_asks",
-                        "reasoning_effort",
-                        "syntax_errors",
-                        "test_timeouts",
-                    ]
-                )
+                candidates.extend(list(VERBOSE_OUTCOME_COLS))
 
             if args.verbose >= 2:
                 # VV
