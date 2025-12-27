@@ -417,10 +417,22 @@ def run_consolidate(args):
 
 
 def run_describe(args):
+    # Setup logging
+    level = logging.WARNING
+    if args.quiet:
+        level = logging.ERROR
+    elif args.verbose == 1:
+        level = logging.INFO
+    elif args.verbose >= 2:
+        level = logging.DEBUG
+
+    logging.basicConfig(level=level, format="%(message)s")
+    logger = logging.getLogger(__name__)
+
     input_file = Path(args.input_file)
     if not input_file.exists():
-        print(f"Error: File {input_file} not found.")
-        print("Please run 'cecli-cat results consolidate' first to generate it.")
+        logger.error(f"Error: File {input_file} not found.")
+        logger.error("Please run 'cecli-cat results consolidate' first to generate it.")
         return
 
     try:
@@ -430,7 +442,7 @@ def run_describe(args):
             desc = desc.drop(columns=["top"])
         print(tabulate(desc, headers="keys", tablefmt="simple", showindex=True))
     except Exception as e:
-        print(f"Error processing {input_file}: {e}")
+        logger.error(f"Error processing {input_file}: {e}")
 
 
 def run_crosstab(args):
@@ -903,5 +915,13 @@ Data Transformations:
         "--input-file",
         default=DEFAULT_CONSOLIDATED_FILE,
         help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
+    )
+    describe_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    describe_parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity (-v, -vv)",
     )
     describe_parser.set_defaults(func=run_describe)
