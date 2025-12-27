@@ -447,9 +447,7 @@ def run_crosstab(args):
     input_file = Path(args.input_file)
     if not input_file.exists():
         logger.error(f"Error: File {input_file} not found.")
-        logger.error(
-            "Please run 'cecli-cat results consolidate' first to generate it."
-        )
+        logger.error("Please run 'cecli-cat results consolidate' first to generate it.")
         return
 
     try:
