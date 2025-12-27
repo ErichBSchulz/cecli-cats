@@ -453,9 +453,7 @@ def run_crosstab(args):
         if "tests_outcomes" in df.columns:
             # "P" indicates at least one pass in the boolean string logic
             df["passed"] = (
-                df["tests_outcomes"]
-                .astype(str)
-                .apply(lambda x: 1 if "P" in x else 0)
+                df["tests_outcomes"].astype(str).apply(lambda x: 1 if "P" in x else 0)
             )
 
         # Determine grouping columns
@@ -852,7 +850,9 @@ Data Transformations:
     crosstab_parser.add_argument(
         "--outcome", help="Comma-separated list of columns to calculate metrics for"
     )
-    crosstab_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    crosstab_parser.add_argument(
+        "-q", "--quiet", action="store_true", help="Quiet output"
+    )
     crosstab_parser.add_argument(
         "-v",
         "--verbose",
