@@ -252,12 +252,16 @@ def run_consolidate(args):
                     if uid:
                         # Parse sets (semicolon separated in index)
                         sets_str = row.get("sets", "")
-                        row["set_list"] = [s.strip() for s in sets_str.split(";") if s.strip()]
+                        row["set_list"] = [
+                            s.strip() for s in sets_str.split(";") if s.strip()
+                        ]
                         cat_index[uid] = row
         except Exception as e:
             logger.warning(f"Failed to read index {index_file}: {e}")
     else:
-        logger.warning(f"Index file {index_file} not found. Metadata validation will be limited.")
+        logger.warning(
+            f"Index file {index_file} not found. Metadata validation will be limited."
+        )
 
     if not results_dir.exists():
         logger.error(f"Results directory '{results_dir}' does not exist.")
