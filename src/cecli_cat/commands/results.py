@@ -20,6 +20,8 @@ REQUIRED_KEYS = [
     "cost",
 ]
 
+DEFAULT_CONSOLIDATED_FILE = "results.csv"
+
 
 def load_index(index_file: Path):
     index = {}
@@ -418,6 +420,7 @@ def run_describe(args):
     input_file = Path(args.input_file)
     if not input_file.exists():
         print(f"Error: File {input_file} not found.")
+        print("Please run 'cecli-cat results consolidate' first to generate it.")
         return
 
     try:
@@ -444,6 +447,9 @@ def run_crosstab(args):
     input_file = Path(args.input_file)
     if not input_file.exists():
         logger.error(f"Error: File {input_file} not found.")
+        logger.error(
+            "Please run 'cecli-cat results consolidate' first to generate it."
+        )
         return
 
     try:
@@ -832,8 +838,8 @@ Data Transformations:
     consolidate_parser.add_argument(
         "-o",
         "--out-file",
-        default="results.csv",
-        help="Output CSV file (default: results.csv)",
+        default=DEFAULT_CONSOLIDATED_FILE,
+        help=f"Output CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
     )
     consolidate_parser.set_defaults(func=run_consolidate)
 
@@ -843,7 +849,12 @@ Data Transformations:
         help="Analyze results with crosstabs",
         description="Load CSV and perform groupby aggregation.",
     )
-    crosstab_parser.add_argument("input_file", help="Path to the CSV file")
+    crosstab_parser.add_argument(
+        "-i",
+        "--input-file",
+        default=DEFAULT_CONSOLIDATED_FILE,
+        help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
+    )
     crosstab_parser.add_argument(
         "--group-by", help="Comma-separated list of columns to group by"
     )
@@ -868,5 +879,10 @@ Data Transformations:
         help="Show dataframe description",
         description="Print a general overview using df.describe().",
     )
-    describe_parser.add_argument("input_file", help="Path to the CSV file")
+    describe_parser.add_argument(
+        "-i",
+        "--input-file",
+        default=DEFAULT_CONSOLIDATED_FILE,
+        help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
+    )
     describe_parser.set_defaults(func=run_describe)
