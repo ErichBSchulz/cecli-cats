@@ -426,7 +426,9 @@ def run_describe(args):
     try:
         df = pd.read_csv(input_file)
         desc = df.describe(include="all").transpose()
-        print(tabulate(desc, headers="keys", tablefmt="grid", showindex=True))
+        if "top" in desc.columns:
+            desc = desc.drop(columns=["top"])
+        print(tabulate(desc, headers="keys", tablefmt="simple", showindex=True))
     except Exception as e:
         print(f"Error processing {input_file}: {e}")
 
