@@ -564,6 +564,20 @@ def run_crosstab(args):
 
             res.reset_index(inplace=True)
 
+        # Rounding logic
+        decimals = args.decimals
+        if decimals is None:
+            if args.quiet:
+                decimals = 3
+            elif args.verbose == 0:
+                decimals = 5
+
+        if decimals is not None:
+            res = res.round(decimals)
+
+        # Replace NaN with blank
+        res = res.fillna("")
+
         print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
 
     except Exception as e:
@@ -860,6 +874,11 @@ Data Transformations:
     )
     crosstab_parser.add_argument(
         "--outcome", help="Comma-separated list of columns to calculate metrics for"
+    )
+    crosstab_parser.add_argument(
+        "--decimals",
+        type=int,
+        help="Number of decimal places (default: 3 for quiet, 5 for normal, raw for verbose)",
     )
     crosstab_parser.add_argument(
         "-q", "--quiet", action="store_true", help="Quiet output"
