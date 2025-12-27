@@ -526,7 +526,15 @@ def add_parser(subparsers):
     results_parser = subparsers.add_parser(
         "results",
         help="Manage test results",
-        description="Commands for aggregating and managing test results.",
+        description="""
+Commands for aggregating and managing test results.
+
+This suite of tools handles the lifecycle of test results:
+1. aggregate: Harvest raw .aider.results.json files from run directories.
+2. clean: Identify and remove failed or malformed runs.
+3. consolidate: Flatten and denormalize data into a CSV for analysis.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     results_subparsers = results_parser.add_subparsers(
         dest="results_command", required=True
@@ -537,10 +545,20 @@ def add_parser(subparsers):
         "aggregate",
         help="Aggregate test results from run directories",
         description="""
-        Scans a directory for test runs (matching YYYY-MM-DD-HH-MM-SS--*), finds
-        all .aider.results.json files, enriches them with cat UUID/Hash (via cat.yaml or index.csv),
-        and saves aggregated JSON files organized by Model and Run.
-        """,
+Scans a directory for test runs and aggregates individual test results.
+
+Features:
+- Discovery: Finds run directories matching 'YYYY-MM-DD-HH-MM-SS--*'.
+- Extraction: Locates '.aider.results.json' files within runs.
+- Enrichment:
+    - Identifies tests via 'cat.yaml' (UUID/Hash).
+    - Fallback to path-based lookup using 'cat/index.csv' for classic tests.
+    - Adds 'cat_uuid' and 'cat_hash' to results.
+- Output:
+    - JSON files organized by 'results/MODEL/RUN/results.json'.
+    - Summaries with pass/fail counts.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     agg_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
     agg_parser.add_argument(
@@ -574,9 +592,17 @@ def add_parser(subparsers):
         "clean",
         help="List directories with 100%% rejected results",
         description="""
-        Lists directories containing runs (source data and aggregated) that have 100% rejected results.
-        Useful for identifying failed runs that can be deleted.
-        """,
+Identifies and cleans up failed test runs.
+
+Features:
+- Detection: Finds runs with 100% rejected results (malformed JSON or missing keys).
+- Scope: Scans both source run directories and aggregated output directories.
+- Safety:
+    - Default: Prints shell commands to delete failed runs (dry-run).
+    - --interactive: Asks for confirmation before deleting.
+    - --yolo: Deletes immediately without confirmation.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     clean_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
     clean_parser.add_argument(
@@ -615,9 +641,19 @@ def add_parser(subparsers):
         "consolidate",
         help="Consolidate aggregated results into a single CSV",
         description="""
-        Scans all results.json files in the results directory, combines them with metadata
-        from the cats directory (index.csv), and outputs a consolidated denormalized CSV.
-        """,
+Merges aggregated results into a single, analysis-ready CSV file.
+
+Data Transformations:
+- Flattening: Denormalizes nested JSON into flat CSV columns.
+- Outcomes: Converts boolean lists (e.g. [True, False]) to strings (e.g. "PF").
+- Sets: Explodes 'sets' list into individual binary columns (e.g. 'set_polyglot=1').
+- Validation:
+    - Verifies UUIDs against the CAT index.
+    - Checks for hash mismatches between result and index.
+    - Adds a 'notes' column for any data integrity warnings.
+- Metadata: Joins with 'cat/index.csv' to ensure language and other fields are present.
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     consolidate_parser.add_argument(
         "-q", "--quiet", action="store_true", help="Quiet output"
