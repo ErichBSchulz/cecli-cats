@@ -6,6 +6,8 @@ import re
 import shlex
 import shutil
 import yaml
+import pandas as pd
+from tabulate import tabulate
 from collections import defaultdict
 from pathlib import Path
 
@@ -412,6 +414,158 @@ def run_consolidate(args):
         logger.error(f"Failed to write output file: {e}")
 
 
+def run_describe(args):
+    input_file = Path(args.input_file)
+    if not input_file.exists():
+        print(f"Error: File {input_file} not found.")
+        return
+
+    try:
+        df = pd.read_csv(input_file)
+        desc = df.describe(include="all")
+        print(tabulate(desc, headers="keys", tablefmt="grid"))
+    except Exception as e:
+        print(f"Error processing {input_file}: {e}")
+
+
+def run_crosstab(args):
+    # Setup logging
+    level = logging.WARNING
+    if args.quiet:
+        level = logging.ERROR
+    elif args.verbose == 1:
+        level = logging.INFO
+    elif args.verbose >= 2:
+        level = logging.DEBUG
+
+    logging.basicConfig(level=level, format="%(message)s")
+    logger = logging.getLogger(__name__)
+
+    input_file = Path(args.input_file)
+    if not input_file.exists():
+        logger.error(f"Error: File {input_file} not found.")
+        return
+
+    try:
+        df = pd.read_csv(input_file)
+
+        # Derive passed if possible
+        if "tests_outcomes" in df.columns:
+            # "P" indicates at least one pass in the boolean string logic
+            df["passed"] = (
+                df["tests_outcomes"]
+                .astype(str)
+                .apply(lambda x: 1 if "P" in x else 0)
+            )
+
+        # Determine grouping columns
+        group_cols = []
+        if args.group_by:
+            group_cols = [c.strip() for c in args.group_by.split(",") if c.strip()]
+        else:
+            # Defaults
+            candidates = []
+            if args.quiet:
+                candidates = ["model"]
+            else:
+                candidates = ["model", "language", "edit_format"]
+
+            if args.verbose >= 1:
+                candidates.append("tests_outcomes")
+                # Add set_* columns
+                candidates.extend([c for c in df.columns if c.startswith("set_")])
+
+            if args.verbose >= 2:
+                # Add all numeric fields
+                candidates.extend(df.select_dtypes(include="number").columns.tolist())
+
+            # Filter duplicates and existence
+            seen = set()
+            for c in candidates:
+                if c in df.columns and c not in seen:
+                    group_cols.append(c)
+                    seen.add(c)
+
+        if not group_cols:
+            logger.error("No valid grouping columns found.")
+            return
+
+        # Determine outcome columns
+        outcome_cols = []
+        if args.outcome:
+            outcome_cols = [c.strip() for c in args.outcome.split(",") if c.strip()]
+        else:
+            # Defaults
+            candidates = []
+            if "passed" in df.columns:
+                candidates.append("passed")
+
+            if not args.quiet:
+                # Normal
+                candidates.extend(
+                    [
+                        "prompt_tokens",
+                        "cost",
+                        "duration",
+                        "completion_tokens",
+                        "thinking_tokens",
+                    ]
+                )
+
+            if args.verbose >= 1:
+                # V
+                candidates.extend(
+                    [
+                        "indentation_errors",
+                        "lazy_comments",
+                        "map_tokens",
+                        "num_error_outputs",
+                        "num_exhausted_context_windows",
+                        "num_malformed_responses",
+                        "num_user_asks",
+                        "reasoning_effort",
+                        "syntax_errors",
+                        "test_timeouts",
+                    ]
+                )
+
+            if args.verbose >= 2:
+                # VV
+                candidates.extend(df.select_dtypes(include="number").columns.tolist())
+
+            # Filter duplicates and existence
+            seen = set()
+            for c in candidates:
+                if c in df.columns and c not in seen:
+                    outcome_cols.append(c)
+                    seen.add(c)
+
+        # Aggregation
+        if not outcome_cols:
+            # Just count rows
+            res = df.groupby(group_cols).size().reset_index(name="count")
+        else:
+            # Metric aggregation
+            agg_dict = {}
+            for c in outcome_cols:
+                agg_dict[c] = ["sum", "mean", "count"]
+
+            res = df.groupby(group_cols).agg(agg_dict)
+
+            # Flatten MultiIndex columns
+            res.columns = ["_".join(col).strip() for col in res.columns.values]
+
+            # Add a generic group size count
+            res["group_count"] = df.groupby(group_cols).size().values
+
+            res.reset_index(inplace=True)
+
+        print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
+
+    except Exception as e:
+        logger.error(f"Error: {e}")
+
+
 def run_clean(args):
     # Setup logging
     level = logging.WARNING
@@ -684,3 +838,35 @@ Data Transformations:
         help="Output CSV file (default: results.csv)",
     )
     consolidate_parser.set_defaults(func=run_consolidate)
+
+    # Crosstab subcommand
+    crosstab_parser = results_subparsers.add_parser(
+        "crosstab",
+        help="Analyze results with crosstabs",
+        description="Load CSV and perform groupby aggregation.",
+    )
+    crosstab_parser.add_argument("input_file", help="Path to the CSV file")
+    crosstab_parser.add_argument(
+        "--group-by", help="Comma-separated list of columns to group by"
+    )
+    crosstab_parser.add_argument(
+        "--outcome", help="Comma-separated list of columns to calculate metrics for"
+    )
+    crosstab_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    crosstab_parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity (-v, -vv)",
+    )
+    crosstab_parser.set_defaults(func=run_crosstab)
+
+    # Describe subcommand
+    describe_parser = results_subparsers.add_parser(
+        "describe",
+        help="Show dataframe description",
+        description="Print a general overview using df.describe().",
+    )
+    describe_parser.add_argument("input_file", help="Path to the CSV file")
+    describe_parser.set_defaults(func=run_describe)
