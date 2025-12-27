@@ -66,6 +66,12 @@ def format_dataframe(df, args):
     if decimals is not None:
         df = df.round(decimals)
 
+        # Handle object columns that might contain floats (e.g. min/max in describe output)
+        for col in df.select_dtypes(include=["object"]).columns:
+            df[col] = df[col].apply(
+                lambda x: round(x, decimals) if isinstance(x, float) else x
+            )
+
     return df.fillna("")
 
 
