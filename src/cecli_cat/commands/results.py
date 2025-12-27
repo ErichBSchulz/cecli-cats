@@ -5,6 +5,7 @@ import logging
 import re
 import shlex
 import shutil
+import textwrap
 import yaml
 import pandas as pd
 from tabulate import tabulate
@@ -855,6 +856,7 @@ Data Transformations:
         "crosstab",
         help="Analyze results with crosstabs",
         description="Load CSV and perform groupby aggregation.",
+        formatter_class=argparse.RawTextHelpFormatter,
     )
     crosstab_parser.add_argument(
         "-i",
@@ -864,20 +866,25 @@ Data Transformations:
     )
 
     gb_help = (
-        "Comma-separated list of columns to group by. Defaults vary by verbosity: "
-        f"Quiet (-q): {', '.join(QUIET_GROUP_BY_COLS)}. "
-        f"Normal: {', '.join(DEFAULT_GROUP_BY_COLS)}. "
-        "Verbose (-v): Adds tests_outcomes, set_*. "
-        "Very Verbose (-vv): Adds all numeric fields."
+        "Comma-separated list of columns to group by.\n"
+        "Defaults vary by verbosity:\n"
+        f"  Quiet (-q):       {', '.join(QUIET_GROUP_BY_COLS)}\n"
+        f"  Normal:           {', '.join(DEFAULT_GROUP_BY_COLS)}\n"
+        "  Verbose (-v):     Adds tests_outcomes, set_*\n"
+        "  Very Verbose (-vv): Adds all numeric fields"
     )
     crosstab_parser.add_argument("--group-by", help=gb_help)
 
+    v_cols = textwrap.fill(
+        ", ".join(VERBOSE_OUTCOME_COLS), width=60, subsequent_indent=" " * 22
+    )
     out_help = (
-        "Comma-separated list of columns to calculate metrics for. Defaults vary by verbosity: "
-        f"Quiet (-q): {', '.join(QUIET_OUTCOME_COLS)}. "
-        f"Normal: Adds {', '.join(DEFAULT_OUTCOME_COLS)}. "
-        f"Verbose (-v): Adds {', '.join(VERBOSE_OUTCOME_COLS)}. "
-        "Very Verbose (-vv): Adds all numeric fields."
+        "Comma-separated list of columns to calculate metrics for.\n"
+        "Defaults vary by verbosity:\n"
+        f"  Quiet (-q):       {', '.join(QUIET_OUTCOME_COLS)}\n"
+        f"  Normal:           Adds {', '.join(DEFAULT_OUTCOME_COLS)}\n"
+        f"  Verbose (-v):     Adds {v_cols}\n"
+        "  Very Verbose (-vv): Adds all numeric fields"
     )
     crosstab_parser.add_argument("--outcome", help=out_help)
     add_decimals_arg(crosstab_parser)
