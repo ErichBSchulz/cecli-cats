@@ -594,7 +594,7 @@ def run_crosstab(args):
 
             res = format_dataframe(res, args)
 
-            print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
+            print(tabulate(res, headers="keys", tablefmt="simple", showindex=False))
 
     except Exception as e:
         logger.error(f"Error: {e}")
