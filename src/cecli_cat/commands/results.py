@@ -21,6 +21,7 @@ REQUIRED_KEYS = [
 ]
 
 DEFAULT_CONSOLIDATED_FILE = "results.csv"
+DEFAULT_GROUP_BY_COLS = ["model", "language", "edit_format"]
 
 
 def setup_logging(args):
@@ -498,7 +499,7 @@ def run_crosstab(args):
             if args.quiet:
                 candidates = ["model"]
             else:
-                candidates = ["model", "language", "edit_format"]
+                candidates = list(DEFAULT_GROUP_BY_COLS)
 
             if args.verbose >= 1:
                 candidates.append("tests_outcomes")
@@ -860,7 +861,8 @@ Data Transformations:
         help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
     )
     crosstab_parser.add_argument(
-        "--group-by", help="Comma-separated list of columns to group by"
+        "--group-by",
+        help=f"Comma-separated list of columns to group by (default: {', '.join(DEFAULT_GROUP_BY_COLS)})",
     )
     crosstab_parser.add_argument(
         "--outcome", help="Comma-separated list of columns to calculate metrics for"
