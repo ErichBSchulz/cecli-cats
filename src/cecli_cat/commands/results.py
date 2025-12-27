@@ -488,10 +488,10 @@ def run_crosstab(args):
                 df["tests_outcomes"].astype(str).apply(lambda x: 1 if "P" in x else 0)
             )
 
-        # Determine grouping columns
-        group_cols = []
+        # Determine grouping columns (dimensions)
+        dimensions = []
         if args.group_by:
-            group_cols = [c.strip() for c in args.group_by.split(",") if c.strip()]
+            dimensions = [c.strip() for c in args.group_by.split(",") if c.strip()]
         else:
             # Defaults
             candidates = []
@@ -513,10 +513,10 @@ def run_crosstab(args):
             seen = set()
             for c in candidates:
                 if c in df.columns and c not in seen:
-                    group_cols.append(c)
+                    dimensions.append(c)
                     seen.add(c)
 
-        if not group_cols:
+        if not dimensions:
             logger.error("No valid grouping columns found.")
             return
 
@@ -571,28 +571,30 @@ def run_crosstab(args):
                     seen.add(c)
 
         # Aggregation
-        if not outcome_cols:
-            # Just count rows
-            res = df.groupby(group_cols).size().reset_index(name="count")
-        else:
-            # Metric aggregation
-            agg_dict = {}
-            for c in outcome_cols:
-                agg_dict[c] = ["sum", "mean", "count"]
+        for dim in dimensions:
+            print(f"\nDimension: {dim}")
+            if not outcome_cols:
+                # Just count rows
+                res = df.groupby([dim]).size().reset_index(name="count")
+            else:
+                # Metric aggregation
+                agg_dict = {}
+                for c in outcome_cols:
+                    agg_dict[c] = ["sum", "mean", "count"]
 
-            res = df.groupby(group_cols).agg(agg_dict)
+                res = df.groupby([dim]).agg(agg_dict)
 
-            # Flatten MultiIndex columns
-            res.columns = ["_".join(col).strip() for col in res.columns.values]
+                # Flatten MultiIndex columns
+                res.columns = ["_".join(col).strip() for col in res.columns.values]
 
-            # Add a generic group size count
-            res["group_count"] = df.groupby(group_cols).size().values
+                # Add a generic group size count
+                res["group_count"] = df.groupby([dim]).size().values
 
-            res.reset_index(inplace=True)
+                res.reset_index(inplace=True)
 
-        res = format_dataframe(res, args)
+            res = format_dataframe(res, args)
 
-        print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
+            print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
 
     except Exception as e:
         logger.error(f"Error: {e}")
