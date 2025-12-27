@@ -575,11 +575,20 @@ def run_crosstab(args):
                     seen.add(c)
 
         # Aggregation
-        for dim in dimensions:
-            print(f"\nDimension: {dim}")
+        group_sets = []
+        if len(dimensions) > 1:
+            primary = dimensions[0]
+            for other in dimensions[1:]:
+                group_sets.append([primary, other])
+        else:
+            group_sets.append([dimensions[0]])
+
+        for group_cols in group_sets:
+            group_desc = " + ".join(group_cols)
+            print(f"\nDimension: {group_desc}")
             if not outcome_cols:
                 # Just count rows
-                res = df.groupby([dim]).size().reset_index(name="count")
+                res = df.groupby(group_cols).size().reset_index(name="count")
             else:
                 # Metric aggregation
                 agg_dict = {}
@@ -590,13 +599,13 @@ def run_crosstab(args):
                 for c in outcome_cols:
                     agg_dict[c] = metrics
 
-                res = df.groupby([dim]).agg(agg_dict)
+                res = df.groupby(group_cols).agg(agg_dict)
 
                 # Flatten MultiIndex columns
                 res.columns = ["_".join(col).strip() for col in res.columns.values]
 
                 # Add a generic group size count
-                res["group_count"] = df.groupby([dim]).size().values
+                res["group_count"] = df.groupby(group_cols).size().values
 
                 res.reset_index(inplace=True)
 
