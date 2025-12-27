@@ -222,6 +222,192 @@ def run_aggregate(args):
     logger.info("Aggregation complete.")
 
 
+def run_consolidate(args):
+    # Setup logging
+    level = logging.WARNING
+    if args.quiet:
+        level = logging.ERROR
+    elif args.verbose == 1:
+        level = logging.INFO
+    elif args.verbose >= 2:
+        level = logging.DEBUG
+
+    logging.basicConfig(level=level, format="%(message)s")
+    logger = logging.getLogger(__name__)
+
+    results_dir = Path(args.results_dir)
+    cats_dir = Path(args.cats_dir)
+    out_file = Path(args.out_file)
+    index_file = cats_dir / "index.csv"
+
+    # Load index keyed by UUID
+    cat_index = {}
+    if index_file.exists():
+        logger.info(f"Loading index from {index_file}...")
+        try:
+            with open(index_file, "r") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    uid = row.get("uuid")
+                    if uid:
+                        # Parse sets (semicolon separated in index)
+                        sets_str = row.get("sets", "")
+                        row["set_list"] = [s.strip() for s in sets_str.split(";") if s.strip()]
+                        cat_index[uid] = row
+        except Exception as e:
+            logger.warning(f"Failed to read index {index_file}: {e}")
+    else:
+        logger.warning(f"Index file {index_file} not found. Metadata validation will be limited.")
+
+    if not results_dir.exists():
+        logger.error(f"Results directory '{results_dir}' does not exist.")
+        return
+
+    logger.info(f"Scanning {results_dir} for results.json files...")
+    result_files = list(results_dir.rglob("results.json"))
+    logger.info(f"Found {len(result_files)} files. Processing...")
+
+    all_sets = set()
+    rows = []
+    processed_count = 0
+
+    for res_file in result_files:
+        try:
+            with open(res_file, "r") as f:
+                data = json.load(f)
+
+            results_list = data.get("results", [])
+            # In results.json, usually structured as {"summary": ..., "results": [...]}
+
+            # The run name is the parent directory name
+            run_name = res_file.parent.name
+
+            for res in results_list:
+                processed_count += 1
+
+                # Create base row
+                row = {}
+                row["run"] = run_name
+
+                # Copy scalar fields, exclude dropped/handled ones
+                exclude = {
+                    "tests_outcomes",
+                    "chat_hashes",
+                    "cat_uuid",
+                    "cat_hash",
+                    "source",
+                }
+                for k, v in res.items():
+                    if k not in exclude and not isinstance(v, (list, dict)):
+                        row[k] = v
+
+                # Handle outcomes
+                outcomes = res.get("tests_outcomes", [])
+                if isinstance(outcomes, list):
+                    row["tests_outcomes"] = "".join(
+                        ["P" if x else "F" for x in outcomes]
+                    )
+                else:
+                    row["tests_outcomes"] = str(outcomes)
+
+                # Metadata and sets
+                uuid = res.get("cat_uuid")
+                res_hash = res.get("cat_hash")
+
+                row["uuid"] = uuid
+                row["hash"] = res_hash
+
+                notes = []
+                cat_sets = []
+
+                if uuid:
+                    if uuid in cat_index:
+                        idx_entry = cat_index[uuid]
+
+                        # Validate hash
+                        idx_hash = idx_entry.get("hash")
+                        if idx_hash and res_hash and idx_hash != res_hash:
+                            notes.append(f"Hash mismatch (index: {idx_hash[:8]}...)")
+
+                        # Enrich language if missing
+                        if "language" not in row or row["language"] == "unknown":
+                            row["language"] = idx_entry.get("language", "unknown")
+
+                        # Sets
+                        cat_sets = idx_entry.get("set_list", [])
+                    else:
+                        notes.append("UUID not found in index")
+                else:
+                    notes.append("No UUID in result")
+
+                row["sets"] = ",".join(cat_sets)
+                for s in cat_sets:
+                    all_sets.add(s)
+                    row[f"set_{s}"] = 1
+
+                if notes:
+                    row["notes"] = "; ".join(notes)
+                else:
+                    row["notes"] = ""
+
+                rows.append(row)
+
+        except Exception as e:
+            logger.warning(f"Error processing {res_file}: {e}")
+
+    # Finalize columns
+    fieldnames = set()
+    for r in rows:
+        fieldnames.update(r.keys())
+
+    # Ensure all set columns exist in all rows
+    sorted_sets = sorted(list(all_sets))
+    set_cols = [f"set_{s}" for s in sorted_sets]
+
+    for s_col in set_cols:
+        fieldnames.add(s_col)
+        for r in rows:
+            if s_col not in r:
+                r[s_col] = 0
+
+    # Determine column order
+    priority = [
+        "run",
+        "model",
+        "language",
+        "testcase",
+        "uuid",
+        "hash",
+        "tests_outcomes",
+        "cost",
+        "duration",
+        "sets",
+        "notes",
+    ]
+    ordered = [f for f in priority if f in fieldnames]
+    others = sorted(
+        [f for f in fieldnames if f not in ordered and not f.startswith("set_")]
+    )
+
+    final_header = ordered + others + set_cols
+
+    logger.info(f"Writing {len(rows)} rows to {out_file}...")
+
+    try:
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(out_file, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=final_header)
+            writer.writeheader()
+            writer.writerows(rows)
+
+        if not args.quiet:
+            print(f"Consolidated {len(rows)} results into {out_file}")
+            print(f"Total Sets found: {len(sorted_sets)} ({', '.join(sorted_sets)})")
+
+    except Exception as e:
+        logger.error(f"Failed to write output file: {e}")
+
+
 def run_clean(args):
     # Setup logging
     level = logging.WARNING
@@ -419,3 +605,42 @@ def add_parser(subparsers):
         help="Ask for confirmation before running clean commands",
     )
     clean_parser.set_defaults(func=run_clean)
+
+    # Consolidate subcommand
+    consolidate_parser = results_subparsers.add_parser(
+        "consolidate",
+        help="Consolidate aggregated results into a single CSV",
+        description="""
+        Scans all results.json files in the results directory, combines them with metadata
+        from the cats directory (index.csv), and outputs a consolidated denormalized CSV.
+        """,
+    )
+    consolidate_parser.add_argument(
+        "-q", "--quiet", action="store_true", help="Quiet output"
+    )
+    consolidate_parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity (-v, -vv)",
+    )
+    consolidate_parser.add_argument(
+        "-r",
+        "--results-dir",
+        default="results",
+        help="Directory containing aggregated results (default: results)",
+    )
+    consolidate_parser.add_argument(
+        "-c",
+        "--cats-dir",
+        default="cat",
+        help="Directory containing cat metadata and index.csv (default: cat)",
+    )
+    consolidate_parser.add_argument(
+        "-o",
+        "--out-file",
+        default="results.csv",
+        help="Output CSV file (default: results.csv)",
+    )
+    consolidate_parser.set_defaults(func=run_consolidate)
