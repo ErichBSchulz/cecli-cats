@@ -916,7 +916,9 @@ Data Transformations:
         default=DEFAULT_CONSOLIDATED_FILE,
         help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
     )
-    describe_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    describe_parser.add_argument(
+        "-q", "--quiet", action="store_true", help="Quiet output"
+    )
     describe_parser.add_argument(
         "-v",
         "--verbose",
