@@ -23,6 +23,52 @@ REQUIRED_KEYS = [
 DEFAULT_CONSOLIDATED_FILE = "results.csv"
 
 
+def setup_logging(args):
+    level = logging.WARNING
+    if args.quiet:
+        level = logging.ERROR
+    elif args.verbose == 1:
+        level = logging.INFO
+    elif args.verbose >= 2:
+        level = logging.DEBUG
+
+    logging.basicConfig(level=level, format="%(message)s")
+    return logging.getLogger(__name__)
+
+
+def add_common_args(parser):
+    parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity (-v, -vv)",
+    )
+
+
+def add_decimals_arg(parser):
+    parser.add_argument(
+        "--decimals",
+        type=int,
+        help="Number of decimal places (default: 3 for quiet, 5 for normal, raw for verbose)",
+    )
+
+
+def format_dataframe(df, args):
+    decimals = getattr(args, "decimals", None)
+    if decimals is None:
+        if args.quiet:
+            decimals = 3
+        elif args.verbose == 0:
+            decimals = 5
+
+    if decimals is not None:
+        df = df.round(decimals)
+
+    return df.fillna("")
+
+
 def load_index(index_file: Path):
     index = {}
     if not index_file.exists():
@@ -53,17 +99,7 @@ def find_run_dir(path: Path):
 
 
 def run_aggregate(args):
-    # Setup logging
-    level = logging.WARNING
-    if args.quiet:
-        level = logging.ERROR
-    elif args.verbose == 1:
-        level = logging.INFO
-    elif args.verbose >= 2:
-        level = logging.DEBUG
-
-    logging.basicConfig(level=level, format="%(message)s")
-    logger = logging.getLogger(__name__)
+    logger = setup_logging(args)
 
     in_dir = Path(args.in_dir)
     out_dir = Path(args.out_dir)
@@ -227,17 +263,7 @@ def run_aggregate(args):
 
 
 def run_consolidate(args):
-    # Setup logging
-    level = logging.WARNING
-    if args.quiet:
-        level = logging.ERROR
-    elif args.verbose == 1:
-        level = logging.INFO
-    elif args.verbose >= 2:
-        level = logging.DEBUG
-
-    logging.basicConfig(level=level, format="%(message)s")
-    logger = logging.getLogger(__name__)
+    logger = setup_logging(args)
 
     results_dir = Path(args.results_dir)
     cats_dir = Path(args.cats_dir)
@@ -417,17 +443,7 @@ def run_consolidate(args):
 
 
 def run_describe(args):
-    # Setup logging
-    level = logging.WARNING
-    if args.quiet:
-        level = logging.ERROR
-    elif args.verbose == 1:
-        level = logging.INFO
-    elif args.verbose >= 2:
-        level = logging.DEBUG
-
-    logging.basicConfig(level=level, format="%(message)s")
-    logger = logging.getLogger(__name__)
+    logger = setup_logging(args)
 
     input_file = Path(args.input_file)
     if not input_file.exists():
@@ -440,23 +456,15 @@ def run_describe(args):
         desc = df.describe(include="all").transpose()
         if "top" in desc.columns:
             desc = desc.drop(columns=["top"])
+
+        desc = format_dataframe(desc, args)
         print(tabulate(desc, headers="keys", tablefmt="simple", showindex=True))
     except Exception as e:
         logger.error(f"Error processing {input_file}: {e}")
 
 
 def run_crosstab(args):
-    # Setup logging
-    level = logging.WARNING
-    if args.quiet:
-        level = logging.ERROR
-    elif args.verbose == 1:
-        level = logging.INFO
-    elif args.verbose >= 2:
-        level = logging.DEBUG
-
-    logging.basicConfig(level=level, format="%(message)s")
-    logger = logging.getLogger(__name__)
+    logger = setup_logging(args)
 
     input_file = Path(args.input_file)
     if not input_file.exists():
@@ -576,19 +584,7 @@ def run_crosstab(args):
 
             res.reset_index(inplace=True)
 
-        # Rounding logic
-        decimals = args.decimals
-        if decimals is None:
-            if args.quiet:
-                decimals = 3
-            elif args.verbose == 0:
-                decimals = 5
-
-        if decimals is not None:
-            res = res.round(decimals)
-
-        # Replace NaN with blank
-        res = res.fillna("")
+        res = format_dataframe(res, args)
 
         print(tabulate(res, headers="keys", tablefmt="grid", showindex=False))
 
@@ -597,17 +593,7 @@ def run_crosstab(args):
 
 
 def run_clean(args):
-    # Setup logging
-    level = logging.WARNING
-    if args.quiet:
-        level = logging.ERROR
-    elif args.verbose == 1:
-        level = logging.INFO
-    elif args.verbose >= 2:
-        level = logging.DEBUG
-
-    logging.basicConfig(level=level, format="%(message)s")
-    logger = logging.getLogger(__name__)
+    logger = setup_logging(args)
 
     in_dir = Path(args.in_dir)
     out_dir = Path(args.out_dir)
@@ -744,14 +730,7 @@ Features:
 """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    agg_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
-    agg_parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="Increase verbosity (-v, -vv)",
-    )
+    add_common_args(agg_parser)
     agg_parser.add_argument(
         "-i",
         "--in-dir",
@@ -788,14 +767,7 @@ Features:
 """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    clean_parser.add_argument("-q", "--quiet", action="store_true", help="Quiet output")
-    clean_parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="Increase verbosity (-v, -vv)",
-    )
+    add_common_args(clean_parser)
     clean_parser.add_argument(
         "-i",
         "--in-dir",
@@ -839,16 +811,7 @@ Data Transformations:
 """,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    consolidate_parser.add_argument(
-        "-q", "--quiet", action="store_true", help="Quiet output"
-    )
-    consolidate_parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="Increase verbosity (-v, -vv)",
-    )
+    add_common_args(consolidate_parser)
     consolidate_parser.add_argument(
         "-r",
         "--results-dir",
@@ -887,21 +850,8 @@ Data Transformations:
     crosstab_parser.add_argument(
         "--outcome", help="Comma-separated list of columns to calculate metrics for"
     )
-    crosstab_parser.add_argument(
-        "--decimals",
-        type=int,
-        help="Number of decimal places (default: 3 for quiet, 5 for normal, raw for verbose)",
-    )
-    crosstab_parser.add_argument(
-        "-q", "--quiet", action="store_true", help="Quiet output"
-    )
-    crosstab_parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="Increase verbosity (-v, -vv)",
-    )
+    add_decimals_arg(crosstab_parser)
+    add_common_args(crosstab_parser)
     crosstab_parser.set_defaults(func=run_crosstab)
 
     # Describe subcommand
@@ -916,14 +866,6 @@ Data Transformations:
         default=DEFAULT_CONSOLIDATED_FILE,
         help=f"Path to the CSV file (default: {DEFAULT_CONSOLIDATED_FILE})",
     )
-    describe_parser.add_argument(
-        "-q", "--quiet", action="store_true", help="Quiet output"
-    )
-    describe_parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="Increase verbosity (-v, -vv)",
-    )
+    add_decimals_arg(describe_parser)
+    add_common_args(describe_parser)
     describe_parser.set_defaults(func=run_describe)
