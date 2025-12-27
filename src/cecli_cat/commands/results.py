@@ -579,8 +579,12 @@ def run_crosstab(args):
             else:
                 # Metric aggregation
                 agg_dict = {}
+                metrics = ["sum", "mean"]
+                if args.verbose >= 2:
+                    metrics.append("count")
+
                 for c in outcome_cols:
-                    agg_dict[c] = ["sum", "mean", "count"]
+                    agg_dict[c] = metrics
 
                 res = df.groupby([dim]).agg(agg_dict)
 
@@ -593,6 +597,9 @@ def run_crosstab(args):
                 res.reset_index(inplace=True)
 
             res = format_dataframe(res, args)
+
+            # Wrap headers
+            res.columns = [c.replace("_", "\n") for c in res.columns]
 
             print(tabulate(res, headers="keys", tablefmt="simple", showindex=False))
 
