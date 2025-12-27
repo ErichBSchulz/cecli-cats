@@ -22,6 +22,12 @@ REQUIRED_KEYS = [
 
 DEFAULT_CONSOLIDATED_FILE = "results.csv"
 DEFAULT_GROUP_BY_COLS = ["model", "language", "edit_format"]
+DEFAULT_OUTCOME_COLS = [
+    "prompt_tokens",
+    "cost",
+    "duration",
+    "completion_tokens",
+]
 
 
 def setup_logging(args):
@@ -533,14 +539,7 @@ def run_crosstab(args):
 
             if not args.quiet:
                 # Normal
-                candidates.extend(
-                    [
-                        "prompt_tokens",
-                        "cost",
-                        "duration",
-                        "completion_tokens",
-                    ]
-                )
+                candidates.extend(list(DEFAULT_OUTCOME_COLS))
 
             if args.verbose >= 1:
                 # V
@@ -865,7 +864,8 @@ Data Transformations:
         help=f"Comma-separated list of columns to group by (default: {', '.join(DEFAULT_GROUP_BY_COLS)})",
     )
     crosstab_parser.add_argument(
-        "--outcome", help="Comma-separated list of columns to calculate metrics for"
+        "--outcome",
+        help=f"Comma-separated list of columns to calculate metrics for (default: {', '.join(DEFAULT_OUTCOME_COLS)})",
     )
     add_decimals_arg(crosstab_parser)
     add_common_args(crosstab_parser)
